@@ -1,0 +1,13 @@
+@import url('../THEHIVE/src/index.css');
+.navItemContainer{
+    background: var(--primary-color);
+    display: flex;
+    width: 194px;
+    height: 49px;
+    border-radius: 15px;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    color: var(--secondary-color);
+    /* font-size: 14px; */
+}
