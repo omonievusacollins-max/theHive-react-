@@ -11,7 +11,7 @@ function App() {
     <Card description={'Total items'}  amount={125} svg={'/assets/BurgerIcon.svg'}/>
     <Logo/>
     <NavItem text={'Caterogy'} src={'/assets/Stack.svg'}/>
-    <CategoryCard src={'/assets/BugerImage.png'} color='red'/>
+    <CategoryCard src={'/assets/Burger.svg'} color='red'/>
     </>
   )
 }
