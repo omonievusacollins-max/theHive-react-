@@ -1,0 +1,47 @@
+@import url('../THEHIVE/src/index.css');
+.container{
+    width: 183px;
+    height: 77px;
+    /* border: 1px solid red; */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+     border-radius: 20px;
+     background: var(--white);
+     box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.14);
+}
+
+.imageContainer{
+    height: 39px;
+    width: 39px;
+    background-color: hsla(6, 100%, 50%, 16%);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 0 0 20px;
+}
+
+img{
+    height: 20px;
+    width: 20px;
+    margin-bottom: 2px;
+}
+
+.description-amount{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 45px;
+    /* border: 1px solid red; */
+    margin: 0 48px 0 0;
+}
+
+#description{
+    font-size: 14px;
+}
+
+#amount{
+    font-size: 20px;
+    font-weight: bold;
+}
