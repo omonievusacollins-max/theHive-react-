@@ -1,0 +1,16 @@
+@import url('../THEHIVE/src/index.css');
+
+.CategoryCard-container{
+    width: 250px;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    overflow: hidden;
+}
+
+.CategoryCard-image{
+    width: 200px;
+    height: inherit;
+    border-radius: 50%;
+    margin-left: 40%;
+}
