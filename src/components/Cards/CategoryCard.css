@@ -1,16 +1,24 @@
 @import url('../THEHIVE/src/index.css');
 
 .CategoryCard-container{
-    width: 250px;
-    height: 100%;
+    width: 307px;
+    height: 205px;
     display: flex;
     justify-content: space-between;
     overflow: hidden;
+    border-radius: 15px;
 }
 
 .CategoryCard-image{
-    width: 200px;
-    height: inherit;
-    border-radius: 50%;
-    margin-left: 40%;
+    width: 234px;
+    height: 205px;
+    border-radius: 102.2px;
+    margin-left: 60px;
+}
+
+.category{
+    font-size: 24px;
+    font-weight: 500;
+    color: white;
+    margin: 30px 0 0 40px;
 }
