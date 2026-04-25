@@ -1,3 +1,4 @@
+@import url('../THEHIVE/src/index.css');
 .button{
     background-color: var(--primary-color);
     border: none;
