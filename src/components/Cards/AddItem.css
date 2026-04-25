@@ -1,0 +1,36 @@
+@import url('../THEHIVE/src/index.css');
+.AddItemContainer{
+    width: 442px;
+    height: 301px;
+    background-color: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 15px;
+}
+
+.groupItems{
+    width: 334.76px;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.AddItemContainer input{
+    width: 334.76px;
+    height: 37px;
+    padding-left: 20px;
+    border-radius: 10px;
+}
+
+#select{
+    width: 136.31px;
+    height: 34px;
+}
+
+.AddItemContainer button{
+    width: 334.76px;
+    height: 37px;
+    border-radius: 10px;
+}
