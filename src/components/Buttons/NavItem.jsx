@@ -1,11 +1,15 @@
 import './NavItem.css'
-function NavItem({text, src}){
+import Button from './Button'
+function NavItem(){
     // const iconString = icon;
     return(
-        <div className="navItemContainer">
-            <img src={src} alt="" className="itemIcon"/>
-            <p className="itemText">{text}</p>
-        </div>
+      <nav>
+        <Button text={'Dash board'} iconWhite={'./assets/DashboardWhite.svg'} iconGrey={'./assets/Dashboard.svg'}/>
+        <Button text={'Menu Item'} iconSrc={'./assets/MenuList.svg'}/>
+        <Button text={'Categories'} iconSrc={'./assets/stacks.svg'}/>
+        <Button text={'Orders'} iconSrc={'./assets/Menu.svg'}/>
+        <Button text={'Analytics'} iconSrc={'./assets/Analytics.svg'}/>
+      </nav>
     )
 }
 export default NavItem
