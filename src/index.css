@@ -4,10 +4,12 @@
   --green: green;
   --purple: purple;
   --white: #ffffff;
+  --grey: #676767;
 }
 
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Pontano Sans', sans-serif;
 }
