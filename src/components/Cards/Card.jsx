@@ -1,8 +1,8 @@
 import './card.css'
-function Card({description, amount, svg}){
+function Card({description, amount, svg, color}){
     return(
         <div className='container'>
-            <div className="imageContainer">
+            <div className="imageContainer" style={{background: color}}>
                 <img src={svg} alt="svg" />  
             </div>
 
