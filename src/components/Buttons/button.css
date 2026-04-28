@@ -1,9 +1,18 @@
 @import url('../THEHIVE/src/index.css');
 .button{
-    background-color: var(--primary-color);
     border: none;
     width: 163px;
     height: 49px;
     border-radius: 15px;
     font-size: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
 }
+
+.hover{
+    background-color: var(--primary-color);
+    color: var(--white);
+}
+
