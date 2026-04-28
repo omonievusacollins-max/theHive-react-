@@ -1,3 +1,8 @@
-body{
-  background-color: #EFEFEF;
+@import url('./index.css');
+
+header{
+  display: flex;
+  width: 100%;
+  border: 1px solid red;
+  gap: 163px;
 }
