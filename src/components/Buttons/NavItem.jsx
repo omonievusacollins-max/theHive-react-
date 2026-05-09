@@ -4,11 +4,11 @@ function NavItem(){
     // const iconString = icon;
     return(
       <nav>
-        <Button text={'Dash board'} iconWhite={'./assets/DashboardWhite.svg'} iconGrey={'./assets/Dashboard.svg'}/>
-        <Button text={'Menu Item'} iconSrc={'./assets/MenuList.svg'}/>
-        <Button text={'Categories'} iconSrc={'./assets/stacks.svg'}/>
-        <Button text={'Orders'} iconSrc={'./assets/Menu.svg'}/>
-        <Button text={'Analytics'} iconSrc={'./assets/Analytics.svg'}/>
+        <Button text={'Dash board'} iconWhite={'./assets/DashboardWhite.svg'} iconGrey={'./assets/Dashboard.svg'} iconSrc={true}/>
+        <Button text={'Menu Item'} iconWhite={'./assets/MenuListWhite.svg'} iconGrey={'./assets/MenuListGrey.svg'} iconSrc={true}/>
+        <Button text={'Categories'} iconWhite={'./assets/StackWhite.svg'} iconGrey={'./assets/StackGrey.svg'} iconSrc={true}/>
+        <Button text={'Orders'} iconGrey={'./assets/Menu.svg'} iconWhite={'./assets/MenuWhite.svg'} iconSrc={true}/>
+        <Button text={'Analytics'} iconWhite={'./assets/AnalyticsWhite.svg'} iconGrey={'./assets/AnalyticsGrey.svg'} iconSrc={true}/>
       </nav>
     )
 }
