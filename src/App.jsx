@@ -7,6 +7,9 @@ import CategoryCard from './components/Cards/CategoryCard';
 import AddITem from './components/Cards/AddItem';
 import SaveItem from './components/Cards/SaveItem';
 import Button from './components/Buttons/Button';
+import Search from './components/Inputs/Search';
+import CardList from './components/Cards/CardList';
+import CategoryDropDown from './components/Inputs/CategoryDropDown';
 function App() {
 
   return (
@@ -18,18 +21,24 @@ function App() {
         <p>Manage your restaurant's Offerings</p>
       </div>
     </header>
-    {/* <Card description={'Total items'}  amount={125} svg={'/assets/BurgerIcon.svg'}/> */}
-    {/* <Logo/> */}
-    <NavItem/>
-    <section>
-      <div className=''>
-        <Card description={'Total items'}  amount={125} svg={'/assets/BurgerIcon.svg'}/>
-        <Card description={'Categories'}  amount={8} svg={'/assets/BurgerIcon.svg'}/>
-        
-        <Card description={'Available'}  amount={'Coming soon'} svg={'/assets/checkGreen.svg'} color={'hsla(128, 100, 31, 16%)'}/>
-        <Card description={'Out of Stock'}  amount={125} svg={'/assets/redBanIcon.svg'} color={'128, 100, 31, 16%'}/>
-      </div>
-    </section>
+
+    <div className='dashboard'>
+      <NavItem/>
+
+      <main>
+        <CardList/>
+        <div className='controlMenu'>
+          <div className='filter'>
+            <Search placeholder={'Search menu item'}/>
+            <CategoryDropDown/>
+          </div>
+
+          <Button enableHover={false} text={'Add New Item'} iconSrc={false}/>
+        </div>
+      </main>
+
+    </div>
+
 
     {/* <CategoryCard src={'/assets/Burger.svg'} color='red'/> */}
     {/* <AddITem/> */}

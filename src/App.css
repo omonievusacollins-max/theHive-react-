@@ -6,3 +6,28 @@ header{
   border: 1px solid red;
   gap: 163px;
 }
+.dashboard{
+  display: flex;
+  gap: 95px;
+}
+
+main{
+  width: 100%;
+  border: 1px solid purple;
+  margin-right: 132px;
+}
+.filter{
+  display: flex;
+  gap: 38px;
+}
+
+.controlMenu{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--secondary-color);
+  height: 70px;
+  padding: 0 36px;
+  margin-top: 36px;
+  border-radius: 15px;
+}
