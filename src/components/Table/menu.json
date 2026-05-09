@@ -1,0 +1,36 @@
+{
+    "sharwarma": [
+        {"name" :"regular-beef", "price": 3800},
+        {"name" :"chicken", "price": 4000},
+        {"name" :"turkey", "price": 4500},
+        {"name" :"hive-jumbo", "price": 5500},
+        {"name" :"hive-combo", "price": 4500}
+    ],
+    "burger": [
+         {"name" :"regular-beef", "price": 3800},
+        {"name" :"cheese", "price": 4000},
+        {"name" :"double-decker(no cheese)", "price": 4000},
+        {"name" :"double-decker(cheese)", "price": 4500}    
+        ]
+    ,
+    "Pasta":[
+         {"name" :"Pasta and beef", "price": 2500},
+        {"name" :"Pasta and chicken", "price": 5000},
+        {"name" :"Pasta and turkey", "price": 7500}
+    ],
+    "Sandwich":[
+        {"name" :"Beef (Small)", "price": 3000},
+        {"name" :"Beef (Large)", "price": 5000},
+        {"name" :"Chicken (Small)", "price": 3300},
+        {"name" :"Chicken (Large)", "price": 5300},
+        {"name" :"Turkey (Small)", "price": 3800},
+        {"name" :"Turkey (Large)", "price": 6000}
+    ],
+    "side dishes and extras":[
+        {"name" :"Hive Special Noodles", "price": 3000},
+        {"name" :"Yam & Egg Sauce", "price": 3000},
+        {"name" :"Plantain & Egg Sauce", "price": 3000},
+        {"name" :"Chicken & Chips", "price": 5000},
+        {"name" :"Turkey & Chips", "price": 7500}
+    ]
+}
