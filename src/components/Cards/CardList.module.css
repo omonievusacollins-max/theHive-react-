@@ -1,0 +1,7 @@
+/* @import url('../THEHIVE/src/index.css'); */
+.records{
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 183px);
+  gap: 16px;
+  border: 1px solid red;
+};
