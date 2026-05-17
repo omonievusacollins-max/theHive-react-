@@ -1,5 +1,5 @@
 {
-    "sharwarma": [
+    "shawarma": [
         {"name" :"regular-beef", "price": 3800},
         {"name" :"chicken", "price": 4000},
         {"name" :"turkey", "price": 4500},
