@@ -61,7 +61,7 @@ function App() {
         <CardList/>
         <div className='controlMenu'>
           <div className='filter'>
-            <Search placeholder={'Search menu item'}/>
+            <Search placeholder={'Search menu item'} searchTerm={searchTerm} setSearchTerm={setSearchTerm}/>
             <CategoryDropDown/>
           </div>
 
