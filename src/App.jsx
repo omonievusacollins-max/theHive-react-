@@ -10,6 +10,11 @@ import Button from './components/Buttons/Button';
 import Search from './components/Inputs/Search';
 import CardList from './components/Cards/CardList';
 import CategoryDropDown from './components/Inputs/CategoryDropDown';
+import MenuTable from './components/Table/MenuTable';
+import {useState} from 'react';
+import menu from '../src/components/Table/menu.json'
+
+
 function App() {
 
   return (
