@@ -10,7 +10,7 @@ const Button = ({ text, onClick, iconWhite, iconGrey, enableHover=true, iconSrc}
         onMouseEnter={() => enableHover && setHovered(true)} onMouseLeave={() => enableHover && setHovered(false)}
         style={{background: hovered ? 'var(--primary-color)' : 'var(--secondary-color)', color: hovered ? 'white' : 'var(--grey)'}}>
             {iconSrc &&<img src={isHovered ? iconWhite : iconGrey} alt="" />}
-            {text}
+            {text} 
         </button>
     );
 }
