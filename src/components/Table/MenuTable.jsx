@@ -7,6 +7,8 @@ import pastaIcon from '/assets/spaghettiIcon.svg' // import the spaghetti icon
 import sidedishIcon from '/assets/sideDishes.svg' // import the side dishes icon
 import Search from '../Inputs/Search';
 import { useState } from "react";
+
+function MenuTable( {menu} ){
     const categoryIcons = {
         burger: burgerIcon,
         sandwich: sandwichIcon,
@@ -15,16 +17,44 @@ import { useState } from "react";
         "side dishes and extras": sidedishIcon
 
     }
+
     return(
         <table className="menu-table">
-            <thead>
+            <thead className="tableHead">
                 <tr>
-                    <th>Item Details</th>
-                    <th>Category</th>
-                    <th>Price</th>
-                    <th>Actions</th>
+                    <th className="itemDetails">Item Details</th>
+                    <th className="Category">Category</th>
+                    <th className="Price">Price</th>
+                    <th className="Actions">Actions</th>
                 </tr>
             </thead>
+            <tbody>
+                {menu.map( meal => (
+                    <tr key={meal.id}>
+                        <td>
+                            <div className="item-info">
+                                <img src={meal.image} alt={meal.name} className="item-image"/>
+                                <span>{meal.name}</span>
+                            </div>
+                        </td>
+
+                        <td className="mealCategory">
+                            <span className={`badge ${meal.category.toLowerCase()}`}>
+                                <img src={categoryIcons[meal.category.toLowerCase()]} alt={meal.category.toLowerCase()} />
+                                {meal.category}</span>
+                        </td>
+
+                        <td>₦{meal.price}</td>
+
+                        <td>
+                            <button>Delete</button>
+                            <button>Edit</button>
+                        </td>
+                    </tr>
+                ))}
+            </tbody>
         </table>
     )
 }
+
+export default MenuTable;
