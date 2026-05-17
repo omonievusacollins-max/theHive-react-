@@ -67,15 +67,10 @@ function App() {
 
           <Button enableHover={false} text={'Add New Item'} iconSrc={false}/>
         </div>
-<MenuTable menu={filteredMenu}/>
+        <MenuTable menu={filteredMenu}/>
       </main>
 
     </div>
-
-
-    {/* <CategoryCard src={'/assets/Burger.svg'} color='red'/> */}
-    {/* <AddITem/> */}
-    {/* <SaveItem/> */}
     </>
   )
 }
