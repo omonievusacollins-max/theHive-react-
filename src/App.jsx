@@ -67,6 +67,7 @@ function App() {
 
           <Button enableHover={false} text={'Add New Item'} iconSrc={false}/>
         </div>
+<MenuTable menu={filteredMenu}/>
       </main>
 
     </div>
