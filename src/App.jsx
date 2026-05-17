@@ -17,6 +17,33 @@ import menu from '../src/components/Table/menu.json'
 
 function App() {
 
+    const formattedMenu = Object.entries(menu).flatMap(
+    ([category, items]) =>
+        items.map((item, index) => ({
+        id: `${category}-${index}`,
+        name: item.name,
+        category,
+        price: item.price
+        }))
+    ); // Flatten the menu into an array of items with category information
+    //
+
+  const category = Object.keys(menu);
+
+  const [dropDown, setDropdown] = useState('all');
+
+  const dropDownFilter = dropDown === "all" ? formattedMenu : formattedMenu.filter(list => list.category === dropDown)
+
+  // console.log(dropDownFilter)
+
+  const [searchTerm, setSearchTerm] = useState('');
+
+  const filteredMenu = dropDownFilter.filter(item=> {
+    return item.name.toLowerCase().includes(searchTerm.toLowerCase())
+  });
+
+
+
   return (
     <>
     <header>
