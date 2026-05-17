@@ -1,9 +1,10 @@
-import './Search.css'
-function Search( {placeholder}){
+import './Search.css';
+import { useState } from 'react';
+function Search( {placeholder, searchTerm, setSearchTerm}){
     return(
         <div className='inputSearchContainer'>
             <img src="./assets/Search.svg" alt="search icon" className='searchIcon'/>
-            <input type="text" className="search" placeholder={placeholder}/>
+            <input type="text" className="search" placeholder={placeholder} value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)}/>
         </div>
     )
 }
