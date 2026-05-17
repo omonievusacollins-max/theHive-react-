@@ -62,7 +62,7 @@ function App() {
         <div className='controlMenu'>
           <div className='filter'>
             <Search placeholder={'Search menu item'} searchTerm={searchTerm} setSearchTerm={setSearchTerm}/>
-            <CategoryDropDown/>
+            <CategoryDropDown filteredCategory={category} dropDown={dropDown} setDropDown={setDropdown}/>
           </div>
 
           <Button enableHover={false} text={'Add New Item'} iconSrc={false}/>
