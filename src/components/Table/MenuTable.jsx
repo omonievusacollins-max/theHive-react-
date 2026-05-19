@@ -20,13 +20,13 @@ function MenuTable( {menu} ){
 
     return(
         <table className="menu-table">
-            <thead className="tableHead">
-                <tr>
-                    <th className="itemDetails">Item Details</th>
-                    <th className="Category">Category</th>
-                    <th className="Price">Price</th>
-                    <th className="Actions">Actions</th>
-                </tr>
+            <thead style={{borderRadius: '20px 20px 0 0'}}>
+                    <tr>
+                        <th className="itemDetails">Item Details</th>
+                        <th className="Category">Category</th>
+                        <th className="Price">Price</th>
+                        <th className="Actions">Actions</th>
+                    </tr>
             </thead>
             <tbody>
                 {menu.map( meal => (
@@ -46,9 +46,9 @@ function MenuTable( {menu} ){
 
                         <td>₦{meal.price}</td>
 
-                        <td>
-                            <button>Delete</button>
-                            <button>Edit</button>
+                        <td className="actions">
+                            <button className='deleteIcon'><img src="./assets/redBinIcon.svg" alt="" />Delete</button>
+                            <button className='editIcon'><img src="./assets/greenEditIcon.svg" alt="" />Edit</button>
                         </td>
                     </tr>
                 ))}

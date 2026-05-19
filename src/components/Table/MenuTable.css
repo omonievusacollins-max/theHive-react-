@@ -1,25 +1,32 @@
+table{
+    border-spacing: 0;
+    background-color: white;
+    width: 100%;
+    margin-top: 50px;
+    border-radius: 20px 20px 0 0;
+    height: 300px;
+    overflow: hidden;
+}
+
+table thead{
+    background-color: rgba(0, 0, 0, 11%);
+    margin: 0;
+    width: 100%;
+    height: 68px;
+    /* visibility: hidden; */
+    border-radius: 20px 20px 0 0;
+    overflow: hidden;
+}
+
 td{
     padding: 20px;
     border-bottom: 1px solid #ddd;
 }
 
-.tableHead{
-    background-color: grey;
-    margin: 0;
-}
-
 th{
     text-align: start;
     padding: 10px 0 10px 20px;
-    border: 1px solid blue;
-}
-
-table{
-    background-color: white;
-    width: 100%;
-    margin-top: 50px;
-    border-radius: 0 0 0 20px;
-    height: 300px;
+    /* border: 1px solid blue; */
 }
 
 .mealCategory span{
@@ -55,4 +62,37 @@ table{
 .sandwich{
     background-color: hsla(225, 76%, 53%, 16%);
     color: #2D5BE2;
+}
+
+.deleteIcon{
+    width: 79px;
+    height: 29px;
+    border: none;
+    border-radius: 20px;
+    color: red;
+    background-color: rgba(255, 7, 0, 14%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.editIcon{
+    width: 79px;
+    height: 29px;
+    border: none;
+    border-radius: 20px;
+    background-color: rgba(0, 174, 38, 14%);
+    color: #00AE26;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.actions{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    /* border: 1px solid brown; */
+    gap: 20px;
+    padding: 20px 0 20px 15px;
 }
