@@ -6,7 +6,7 @@ import shawarmaIcon from '/assets/shawarmaIcon.svg' // import the shawarma icon
 import pastaIcon from '/assets/spaghettiIcon.svg' // import the spaghetti icon
 import sidedishIcon from '/assets/sideDishes.svg' // import the side dishes icon
 import Search from '../Inputs/Search';
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 function MenuTable( {menu} ){
     const categoryIcons = {
@@ -18,7 +18,19 @@ function MenuTable( {menu} ){
 
     }
 
+      // Reset to page 1 whenever filtered menu changes
+    useEffect(() => {
+        setCurrentPage(1)
+    }, [menu])
+
+    const [currentPage, setCurrentPage] = useState(1)
+    const rowsperPage = 5
+    const totalPage = Math.ceil(menu.length / rowsperPage)
+    const startIndex = (currentPage - 1) * rowsperPage
+    const currentRows = menu.slice(startIndex, startIndex + rowsperPage)
+
     return(
+        <>
         <table className="menu-table">
             <thead style={{borderRadius: '20px 20px 0 0'}}>
                     <tr>
@@ -29,7 +41,7 @@ function MenuTable( {menu} ){
                     </tr>
             </thead>
             <tbody>
-                {menu.map( meal => (
+                {currentRows.map( meal => (
                     <tr key={meal.id}>
                         <td>
                             <div className="item-info">
@@ -54,6 +66,19 @@ function MenuTable( {menu} ){
                 ))}
             </tbody>
         </table>
+        <div className="pagination">
+            <button onClick={ () => setCurrentPage(p => p - 1)}
+                disabled={currentPage === 1}>
+                    Previous
+            </button>
+            {Array.from({length: totalPage}, (_, i) => i + 1).map(page => (
+                <button key={page} onClick={()=> setCurrentPage(page)} className={currentPage === page ? "active" : ""}>
+                    {page}
+                </button>
+            ))}
+            <button onClick={()=> setCurrentPage(p => p + 1)} disabled={currentPage === totalPage}>Next</button>
+        </div>
+        </>
     )
 }
 
