@@ -34,8 +34,6 @@ function App() {
 
   const dropDownFilter = dropDown === "all" ? formattedMenu : formattedMenu.filter(list => list.category === dropDown)
 
-  // console.log(dropDownFilter)
-
   const [searchTerm, setSearchTerm] = useState('');
 
   const filteredMenu = dropDownFilter.filter(item=> {
