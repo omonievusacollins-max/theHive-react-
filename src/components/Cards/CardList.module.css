@@ -3,5 +3,4 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, 183px);
   gap: 16px;
-  border: 1px solid red;
 };

@@ -1,7 +1,7 @@
 @import url('../THEHIVE/src/index.css');
 .container{
-    height: 77px;
-    width: 183px;
+    height: 70px;
+    width: 176px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -13,8 +13,8 @@
 }
 
 .imageContainer{
-    height: 39px;
-    width: 39px;
+    height: 32px;
+    width: 32px;
     border-radius: 50%;
     display: flex;
     justify-content: center;
@@ -23,8 +23,8 @@
 }
 
 img{
-    height: 20px;
-    width: 20px;
+    height: 18px;
+    width: 18px;
     margin:0 0 2px 0;
 }
 
@@ -41,7 +41,7 @@ img{
 }
 
 #amount{
-    font-size: 20px;
+    /* font-size: 200px; */
     font-weight: bold;
     width: 100%;
 }
