@@ -4,7 +4,6 @@ import Card from './components/Cards/Card';
 import Logo from './components/Cards/Logo'
 import NavItem from './components/Buttons/NavItem';
 import CategoryCard from './components/Cards/CategoryCard';
-import AddITem from './components/Cards/AddItem';
 import SaveItem from './components/Cards/SaveItem';
 import Button from './components/Buttons/Button';
 import Search from './components/Inputs/Search';
@@ -12,7 +11,8 @@ import CardList from './components/Cards/CardList';
 import CategoryDropDown from './components/Inputs/CategoryDropDown';
 import MenuTable from './components/Table/MenuTable';
 import {useState} from 'react';
-import menu from '../src/components/Table/menu.json'
+import menu from '../src/components/Table/menu.json';
+import EditModal from './components/Modals/EditModal';
 
 
 function App() {
@@ -60,15 +60,31 @@ function App() {
         <div className='controlMenu'>
           <div className='filter'>
             <Search placeholder={'Search menu item'} searchTerm={searchTerm} setSearchTerm={setSearchTerm}/>
-            <CategoryDropDown filteredCategory={category} dropDown={dropDown} setDropDown={setDropdown}/>
+            <CategoryDropDown dropDown={dropDown} setDropDown={setDropdown}/>
           </div>
 
           <Button enableHover={false} text={'Add New Item'} iconSrc={false}/>
         </div>
+        {/* <AddITem class='AddItem'/> */}
         <MenuTable menu={filteredMenu}/>
-      </main>
+        <EditModal/>
 
+      </main>
     </div>
+    <div className='footerContainer'>
+      <div className='AdminInfo'>
+        <img src="./assets/AdminImage.png" alt="" />
+        <div>
+          <h3 className='admin-name'>Admin Name</h3>
+          <p className='admin-role'>Admin Manager</p>
+        </div>
+      </div>
+      <footer className='footer'>
+        <hr />
+        <p>&copy; 2023 Menu Management. All rights reserved.</p>
+      </footer>
+    </div>
+
     </>
   )
 }
