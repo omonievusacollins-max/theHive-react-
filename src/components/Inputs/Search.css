@@ -1,13 +1,12 @@
 @import url('../THEHIVE/src/index.css');
 .inputSearchContainer{
-    /* border: 1px solid red; */
-    width: 269px;
+    width: 260px;
     height: 34px;
     position: relative;
 }
 .search{
     width: 100%;
-    height: 34px;
+    height: 30px;
     border-radius: 10px;
     border: 0.5px solid #CACACA;
     padding-left: 40px;

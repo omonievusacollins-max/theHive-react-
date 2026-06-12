@@ -1,6 +1,6 @@
 import './Search.css';
 import { useState } from 'react';
-function Search( {placeholder, searchTerm, setSearchTerm}){
+function Search( {placeholder, searchTerm, setSearchTerm, setDropDown}){
     return(
         <div className='inputSearchContainer'>
             <img src="./assets/Search.svg" alt="search icon" className='searchIcon'/>
