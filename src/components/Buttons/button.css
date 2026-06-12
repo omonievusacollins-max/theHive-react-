@@ -1,15 +1,14 @@
 @import url('../THEHIVE/src/index.css');
 .button{
     border: none;
-    width: 163px;
-    height: 49px;
+    width: 160px;
+    height: 40px;
     border-radius: 15px;
     font-size: 14px;
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 5px;
-    /* border: 1px solid red; */
-    padding: 0 0 0 35px;
     transition: 0.3s;
 }
 
