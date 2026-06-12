@@ -7,6 +7,7 @@ import pastaIcon from '/assets/spaghettiIcon.svg' // import the spaghetti icon
 import sidedishIcon from '/assets/sideDishes.svg' // import the side dishes icon
 import Search from '../Inputs/Search';
 import { useState, useEffect } from "react";
+import AddITem from '../Cards/ItemForm';
 
 function MenuTable( {menu} ){
     const categoryIcons = {
@@ -52,7 +53,7 @@ function MenuTable( {menu} ){
 
                         <td className="mealCategory">
                             <span className={`badge ${meal.category.toLowerCase()}`}>
-                                <img src={categoryIcons[meal.category.toLowerCase()]} alt={meal.category.toLowerCase()} />
+                                <img src={categoryIcons[meal.category.toLowerCase()]} alt={meal.category.toLowerCase()} className="mealCategoryImage" />
                                 {meal.category}</span>
                         </td>
 
@@ -65,6 +66,7 @@ function MenuTable( {menu} ){
                     </tr>
                 ))}
             </tbody>
+            {/* <AddITem onSave={(newItem) => console.log(newItem)} onClose={() => console.log('close modal')} className='AddItem'/> */}
         </table>
         <div className="pagination">
             <button onClick={ () => setCurrentPage(p => p - 1)}
