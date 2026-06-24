@@ -6,6 +6,11 @@ header{
   border: 1px solid red;
   gap: 163px;
 }
+
+header h1 {
+  font-size: 24px;
+}
+
 .dashboard{
   display: flex;
   gap: 90px;

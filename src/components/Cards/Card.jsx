@@ -10,7 +10,7 @@ function Card({description, amount, svg, backgroundColor}){
 
             <div className={styles.descriptionAmount}>
                 <p id={styles.description}>{description}</p>
-                <h1 id={styles.amount} style={{fontSize: typeof(amount) == 'string' ? '15px' : '20px'}}> {amount}</h1>
+                <h1 id={styles.amount} style={{fontSize: typeof(amount) == 'string' ? '15px' : '24px'}}> {amount}</h1>
             </div>
         </div>
     )
