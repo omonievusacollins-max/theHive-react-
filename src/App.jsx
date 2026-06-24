@@ -13,11 +13,12 @@ import MenuTable from './components/Table/MenuTable';
 import {useState} from 'react';
 import menu from '../src/components/Table/menu.json';
 import EditModal from './components/Modals/EditModal';
+import Staff from './Staff'
 
 
 function App() {
 
-    const formattedMenu = Object.entries(menu).flatMap(
+  const formattedMenu = Object.entries(menu).flatMap(
     ([category, items]) =>
         items.map((item, index) => ({
         id: `${category}-${index}`,
@@ -44,15 +45,16 @@ function App() {
 
   return (
     <>
-    <header>
-      <Logo/>
+    <Staff/>
+    {/* <header>
+      <Logo className="logo"/>
       <div>
         <h1>Menu Management</h1>
         <p>Manage your restaurant's Offerings</p>
       </div>
-    </header>
+    </header> */}
 
-    <div className='dashboard'>
+    {/* <div className='dashboard'>
       <NavItem/>
 
       <main>
@@ -65,7 +67,7 @@ function App() {
 
           <Button enableHover={false} text={'Add New Item'} iconSrc={false}/>
         </div>
-        {/* <AddITem class='AddItem'/> */}
+        <AddITem class='AddItem'/>
         <MenuTable menu={filteredMenu}/>
         <EditModal/>
 
@@ -83,7 +85,7 @@ function App() {
         <hr />
         <p>&copy; 2023 Menu Management. All rights reserved.</p>
       </footer>
-    </div>
+    </div> */}
 
     </>
   )
