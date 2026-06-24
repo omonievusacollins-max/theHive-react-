@@ -3,6 +3,7 @@
     width: 77.46px;
     height: 60.89px;
 }
+
 .Burgerlogo{
     width: 34.62px;
     height: 28.99px;
@@ -10,10 +11,10 @@
 }
 
 .logoContainer{
-    width: 125px;
+    /* width: 125px; */
+    width: 225px;
     display: flex;
     flex-direction: row;
-    border: 1px solid rebeccapurple;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
 }
