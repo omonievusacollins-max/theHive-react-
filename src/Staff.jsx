@@ -3,9 +3,19 @@ import menu from './components/Table/menu.json'
 import Search from './components/Inputs/Search';
 // import { useState, useState } from 'react';
 function Staff(){
-    // const [classList, setClassList] = useState('');
     const category = Object.keys(menu)
-    console.log(category)
+    const Menu = Object.entries(menu)
+
+    // function to capitalize first letter of each word in a sentence
+    function capitalizeWords(sentence){
+        if(!sentence) return;
+        return sentence.split(' ').map(word => {
+            if(!word) return;
+            return word.charAt(0).toUpperCase() + word.slice(1)
+        })
+        .join(' ');
+    }
+
     return(
         <div className='phone'>
             <div className="topbar">
@@ -26,58 +36,33 @@ function Staff(){
                 <Search paddingValue={'11px 14px 11px 36px'} placeholder={'Search Menu...'}/>
                 <div className="cat-rail">
                      <div className="cat-pill active">All</div>
-                    {category.map(category => (
-                    <div className="cat-pill">{category}</div>
+                    {category.map((category, index) => (
+                    <div className="cat-pill" key={index}>{category}</div>
                     ))}
                 </div>
             </div>
 
 
             <div className="cat-block">
-                <div>
-                    <div className="cat-head">Shawarma</div>
-
-                    <div className="food-row" data-name="Regular Beef" data-price="3800">
-                        <div className="food-info">
-                            <div className="food-name">Regular Beef</div>
-                            <div className="food-price">₦3,800</div>
-                        </div>
-                        <div className="add-btn">+</div>
-                    </div>
-                </div>
-
-
-                <div className="food-row" data-name="Chicken" data-price="4000">
-                    <div className="food-info">
-                        <div className="food-name">Chicken</div>
-                        <div className="food-price">₦4,000</div>
-                    </div>
-                        <div className="add-btn">+</div>
-                </div>
-
-
-                <div className="food-row" data-name="Turkey" data-price="4500">
-                    <div className="food-info">
-                        <div className="food-name">Turkey</div>
-                        <div className="food-price">₦4,500</div>
-                    </div>
-                    <div className="add-btn">+</div>
-                </div>
-                <div className="food-row" data-name="Hive Jumbo" data-price="5500">
-                    <div className="food-info">
-                        <div className="food-name">Hive Jumbo</div>
-                        <div className="food-price">₦5,500</div>
-                    </div>
-                    <div className="add-btn">+</div>
-                </div>
-                <div className="food-row out">
-                    <div className="food-info">
-                        <div className="food-name">Hive Combo</div>
-                        <div className="food-soldout">Sold out</div>
-                    </div>
-                    <div className="add-btn">+</div>
-                </div>
+                {
+                    Menu.flatMap(([category, item]) => {
+                        
+                        return [
+                            <div className="cat-head" key={`${category}-`}>{capitalizeWords(category)}</div>,
+                            ...item.map(meal => (
+                                <div className="food-row" data-name="Regular Beef" data-price="3800" key={`${category}-${meal.name}`}>
+                                    <div className="food-info">
+                                        <div className="food-name">{capitalizeWords(meal.name)}</div>
+                                        <div className="food-price">{meal.price}</div>
+                                    </div>
+                                <div className="add-btn">+</div>
+                            </div>
+                            ))
+                        ]
+                    })
+                }
             </div>
+
 
             {/* collapsed drawer tab */}
             <div className="drawer-tab" id="drawerTab">
