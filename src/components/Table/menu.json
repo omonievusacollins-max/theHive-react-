@@ -1,16 +1,16 @@
 {
-    "shawarma": [
-        {"name" :"regular-beef", "price": 3800},
+    "Shawarma": [
+        {"name" :"regular beef", "price": 3800},
         {"name" :"chicken", "price": 4000},
         {"name" :"turkey", "price": 4500},
-        {"name" :"hive-jumbo", "price": 5500},
-        {"name" :"hive-combo", "price": 4500}
+        {"name" :"hive jumbo", "price": 5500},
+        {"name" :"hive combo", "price": 4500}
     ],
-    "burger": [
-         {"name" :"regular-beef", "price": 3800},
+    "Burger": [
+         {"name" :"regular beef", "price": 3800},
         {"name" :"cheese", "price": 4000},
-        {"name" :"double-decker(no cheese)", "price": 4000},
-        {"name" :"double-decker(cheese)", "price": 4500}    
+        {"name" :"double decker(no cheese)", "price": 4000},
+        {"name" :"double decker(cheese)", "price": 4500}    
         ]
     ,
     "Pasta":[
@@ -26,7 +26,7 @@
         {"name" :"Turkey (Small)", "price": 3800},
         {"name" :"Turkey (Large)", "price": 6000}
     ],
-    "side dishes and extras":[
+    "Side dishes and extras":[
         {"name" :"Hive Special Noodles", "price": 3000},
         {"name" :"Yam & Egg Sauce", "price": 3000},
         {"name" :"Plantain & Egg Sauce", "price": 3000},
