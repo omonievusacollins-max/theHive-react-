@@ -1,8 +1,9 @@
 import './Staff.css';
 import menu from './components/Table/menu.json'
 import Search from './components/Inputs/Search';
-import { useState } from 'react';
+import { use, useState } from 'react';
 import { capitalizeWords } from './Utils/capitalizeFirstWords';
+import { generateUniquekey } from './Utils/generateUniqueKey';
 
 function Staff(){
     const category = Object.keys(menu)
@@ -16,6 +17,9 @@ function Staff(){
     const [totalPrice, setTotalPrice] = useState(0);
     const [ticketDisplay, setTicketDisplay] = useState(false)
     const [displayDrawer, setDisplayDrawer] = useState(false)
+    const [itemQuantity, setItemQuantity] = useState(prev => prev + 1)
+    const [cart, setCart] = useState([]);
+    const [countQty, setCountQty] = useState(cart)
 
 
     const handleClickedCategory = (category, index) => {
@@ -23,19 +27,84 @@ function Staff(){
         setActiveState(index);
     }
 
+    // Filters
     const filteredMenu = selectedCategory === 'All' ? Menu : Menu.filter(([category, items])=> category === selectedCategory);
 
     const searchFilterMenu = filteredMenu.map(([category, items]) => {
         const filtereItems = items.filter(item => item.name.includes(searchValue.toLowerCase()))
         return [category, filtereItems]
     }).filter(([category, filtereItems]) => filtereItems.length > 0) // remove empty arrays
-    
-    const addITem = (price) => {
-        setTotalItems(prev=> prev + 1)
+
+    let uid = 0
+
+    // Add item to cart
+    const addItem = (price, category, name) => {
+        addOrIncrementItemQty({name: name, price: price})
+        setTotalItems(prev=> prev + 1);
         setTotalPrice(prev => prev + price)
         setTicketDisplay(true)
-        console.log(totalItems)
-        console.log(totalPrice)
+    }
+
+    //Handles meal clicked twice e.g Regular beef clicked twice
+    const addOrIncrementItemQty = (newItem) => {
+        setCart((prevCart) => {
+            const itemIndex = prevCart.findIndex(item => item.name === newItem.name)
+            if(itemIndex !== -1) {
+                // item exists, incremment qty
+                return prevCart.map((item, index) => index === itemIndex ? {...item, qty: item.qty + 1} : item)
+            }else{
+                // item does nor exist , add with qty 1 or newItem.qty
+                return [...prevCart, {...newItem, qty: newItem.qty || 1}]
+            }
+        })
+    }
+
+    // Increment qty for a specific item
+    const incrementQty = (name, price, itemIndex) => {
+        setCart((prevCart) =>
+            prevCart.map((item, index) => 
+                index === itemIndex ? {...item, qty: item.qty + 1} : item
+            ), setTotalPrice(prev => prev + price)
+        )
+    };
+
+    const decrementQty = (name, price, itemIndex) => {
+        setCart((prevCart) =>
+        prevCart.map((item, index) => 
+            index === itemIndex ? {...item, qty: item.qty - 1} : item
+        ), setTotalPrice(prev => prev - price)
+        )
+    }
+
+
+    // Manage Extra
+    const [amtExtra, setAmtExtra] = useState(0)
+    const [extra, setExtra] = useState([{name: 'sausage', price: 500, qty: 0}, {name: 'cheese', price: 500, qty: 0}])
+
+    const IncrementExtra = (extraPrice, index) => {
+        console.log(index)
+        setTotalPrice(prev => prev + extraPrice)
+        setAmtExtra(prev => prev + 1)
+
+        setExtra(prevExtra => {
+            const newExtra = [...prevExtra];
+            newExtra[index] = {...newExtra[index], qty: newExtra[index].qty + 1}
+            return newExtra;
+        })
+
+    }
+
+    const decrementExtra = (extraPrice, index) => {
+        setTotalPrice(prev => prev - extraPrice);
+        setAmtExtra(prev => prev - 1);
+
+        setExtra(prevExtra => {
+            const newExtra = [...prevExtra];
+            if(newExtra[index].qty > 0) {
+                newExtra[index] = {...newExtra[index], qty: newExtra[index].qty - 1}
+            }
+            return newExtra;
+        })
     }
 
 
@@ -67,16 +136,18 @@ function Staff(){
             </div>
 
 
+
+            {/* MENU */}
             <div className="cat-block">
                 {
                     searchFilterMenu.flatMap(([category, item]) => {
                         return [
                             <div className="cat-head" key={`${category}-`}>{capitalizeWords(category)}</div>,
                             ...item.map(meal => (
-                                <div className="food-row" key={`${category}-${meal.name}`} onClick={()=> addITem(meal.price)}>
+                                <div className="food-row" key={`${category}-${meal.name}`} onClick={()=> addItem(meal.price, category, meal.name)}>
                                     <div className="food-info">
                                         <div className="food-name">{capitalizeWords(meal.name)}</div>
-                                        <div className="food-price">{meal.price}</div>
+                                        <div className="food-price">₦{meal.price}</div>
                                     </div>
                                     <div className="add-btn">+</div>
                                 </div>
@@ -117,22 +188,38 @@ function Staff(){
                 {/* TICKET BODY */}
                 <div className="ticket-body" id="ticketBody">
                     <div className="ticket-empty" style={{display: displayDrawer ? 'none' : 'flex'}}>No items yet</div>
-                    <div class="tline">
-                        <div class="tline-top">
-                            {/* Working on this */}
-                            <div class="tline-name">line.name</div>
-                            <div class="tline-price">₦$lineTotalline.toLocaleString</div>
-                        </div>
-                        <div class="tline-controls">
-                            <div class="tline-qty">
-                                <button>−</button>
-                                <span class="n">$line.qty</span>
-                                <button>+</button>
+                    {
+                        cart.map((item, itemIndex)=> (
+                            <div className="tline" key={generateUniquekey()}>
+
+                                <div className="tline-top">
+
+                                    <div className="tline-name">{item.name}</div>
+                                    <div className="tline-price">₦{(item.price * item.qty)}</div>
+                                </div>
+                                <div className="tline-controls">
+                                    <div className="tline-qty">
+                                        <button onClick={()=> {decrementQty(item.name, item.price, itemIndex)}} disabled={item.qty === 1}>−</button>
+                                        <span className="n">{item.qty}</span>
+                                        <button onClick={() => incrementQty(item.name, item.price, itemIndex)}>+</button>
+                                    </div>
+                                    <button className="tline-remove">Remove</button>
+                                </div>
+
+                                {/* Extra */}
+                                <div className="addon-row">
+                                    {extra.map((extra, index) => (
+                                        <div key={generateUniquekey()}>
+                                            <button onClick={()=> decrementExtra(extra.price, index)} disabled={extra.qty === 0}>-</button>
+                                            <span className='addon-pill' >{`${extra.name}: ${extra.qty}`}</span>
+                                            <button onClick={()=> IncrementExtra(extra.price, index)}>+</button>
+                                        </div> 
+                                    ))}
+                                </div>
                             </div>
-                            <button class="tline-remove">Remove</button>
-                        </div>
-                        <div class="addon-row">chips</div>
-                    </div>
+                        ))
+                    }
+                    
                 </div>
 
                 <div className="ticket-footer">
