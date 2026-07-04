@@ -197,10 +197,14 @@
   
   body{
     font-family:-apple-system,"Inter",system-ui,sans-serif;
-    background:var(--ink);
+    background-color: black;
     color:var(--ink);
     -webkit-font-smoothing:antialiased;
     overscroll-behavior:none;
+  }
+
+  #root{
+    background-color: var(--ink);
   }
 
   .phone{
@@ -210,6 +214,7 @@
     position:relative;
     display:flex; flex-direction:column;
     overflow:hidden;
+    padding: 0 5px;
   }
 
   /* ===== STATUS / HEADER ===== */
@@ -359,18 +364,55 @@
   .tline{padding:12px 0; border-bottom:1px dashed var(--line);}
   .tline:last-child{border-bottom:none;}
   .tline-top{display:flex; justify-content:space-between; gap:10px; margin-bottom:8px;}
-  .tline-name{font-size:14px; font-weight:800; flex:1;}
+  .tline-name{
+    font-size:17px;
+    font-weight:800;
+    flex:1;
+  }
   .tline-price{font-size:14px; font-weight:800; font-variant-numeric:tabular-nums; white-space:nowrap;}
   .tline-controls{display:flex; align-items:center; gap:10px;}
-  .tline-qty{display:flex; align-items:center; gap:0; background:var(--paper-dim); border-radius:8px; overflow:hidden;}
-  .tline-qty button{width:28px; height:28px; background:none; border:none; font-size:15px; font-weight:800; color:var(--ink);}
+  
+  .tline-qty{
+    display:flex;
+    align-items:center;
+    justify-content: space-between;
+    gap:0;
+    background:var(--paper-dim);
+    border-radius:8px; 
+    overflow:hidden;
+    /* border: 1px solid red; */
+    width: 130px;
+    padding: 0 10px;
+  }
+  .tline-qty button{
+    height:28px;
+    background:none;
+    border:none;
+    font-size:15px;
+    font-weight:800;
+    color:var(--ink);
+  }
   .tline-qty .n{min-width:16px; text-align:center; font-size:13px; font-weight:800;}
   .tline-remove{margin-left:auto; font-size:11.5px; font-weight:800; color:var(--red); background:none; border:none; text-transform:uppercase; letter-spacing:0.03em;}
 
   .addon-row{display:flex; gap:6px; margin-top:9px; flex-wrap:wrap;}
   .addon-pill{
     font-size:11px; font-weight:800; padding:5px 10px; border-radius:14px;
-    border:1.5px solid var(--line); color:var(--muted); background:var(--paper);
+    border:none; color:var(--muted); background:var(--paper);
+  }
+  .addon-row button{
+    border: none;
+    background: none;
+    padding: 10px;
+  }
+
+  .addon-row > div {
+    display: flex;
+    align-items: center;
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    width: 130px;
+    justify-content: space-between;
   }
   .addon-pill.on{background:var(--amber); border-color:var(--amber); color:#3D2700;}
 
