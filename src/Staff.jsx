@@ -14,7 +14,6 @@ function Staff(){
     const [activeState, setActiveState] = useState('All');
     const [searchValue, setSearchValue] = useState('');
     const [totalItems, setTotalItems] = useState(0);
-    const [totalPrice, setTotalPrice] = useState(0);
     const [ticketDisplay, setTicketDisplay] = useState(false)
     const [displayDrawer, setDisplayDrawer] = useState(false)
     const [itemQuantity, setItemQuantity] = useState(prev => prev + 1)
@@ -39,9 +38,9 @@ function Staff(){
 
     // Add item to cart
     const addItem = (price, category, name) => {
-        addOrIncrementItemQty({name: name, price: price})
+        const extra = [{name: 'sausage', price: 500, qty: 0}, {name: 'cheese', price: 500, qty: 0}]
+        addOrIncrementItemQty({name: name, price: price, extra: extra})
         setTotalItems(prev=> prev + 1);
-        setTotalPrice(prev => prev + price)
         setTicketDisplay(true)
     }
 
@@ -61,50 +60,44 @@ function Staff(){
 
     // Increment qty for a specific item
     const incrementQty = (name, price, itemIndex) => {
+        const item = cart[itemIndex];
+        const extrasTotal = item.extra.reduce((sum, e) => sum + e.price * e.qty, 0);
+        const unitCost = item.price + extrasTotal
         setCart((prevCart) =>
             prevCart.map((item, index) => 
                 index === itemIndex ? {...item, qty: item.qty + 1} : item
-            ), setTotalPrice(prev => prev + price)
+            )
         )
     };
 
     const decrementQty = (name, price, itemIndex) => {
+        const item = cart[itemIndex];
+        const extrasTotal = item.extra.reduce((sum, e) => sum + e.price * e.qty, 0);
+        console.log(extrasTotal)
+        const unitCost = item.price + extrasTotal
         setCart((prevCart) =>
-        prevCart.map((item, index) => 
-            index === itemIndex ? {...item, qty: item.qty - 1} : item
-        ), setTotalPrice(prev => prev - price)
+            prevCart.map((item, index) => 
+                index === itemIndex ? {...item, qty: item.qty - 1} : item
+            )
         )
     }
 
+    const totalPrice = cart.reduce((sum, item) => {
+        const extrasTotal = item.extra.reduce((s, e) => s + e.price * e.qty, 0);
+        return sum + (item.price + extrasTotal) * item.qty
+    }, 0)
 
-    // Manage Extra
-    const [amtExtra, setAmtExtra] = useState(0)
-    const [extra, setExtra] = useState([{name: 'sausage', price: 500, qty: 0}, {name: 'cheese', price: 500, qty: 0}])
+    const IncrementExtra = (extraPrice, extraIndex, itemIndex, itemPrice, itemQty) => {
+        setCart(prevCart => prevCart.map((cartItem, index) => 
+            index === itemIndex ? {...cartItem, extra: cartItem.extra.map((item, index) => index === extraIndex ? {...item, qty: item.qty + 1}: item)} : cartItem
+        ))
 
-    const IncrementExtra = (extraPrice, index) => {
-        console.log(index)
-        setTotalPrice(prev => prev + extraPrice)
-        setAmtExtra(prev => prev + 1)
+    };
 
-        setExtra(prevExtra => {
-            const newExtra = [...prevExtra];
-            newExtra[index] = {...newExtra[index], qty: newExtra[index].qty + 1}
-            return newExtra;
-        })
-
-    }
-
-    const decrementExtra = (extraPrice, index) => {
-        setTotalPrice(prev => prev - extraPrice);
-        setAmtExtra(prev => prev - 1);
-
-        setExtra(prevExtra => {
-            const newExtra = [...prevExtra];
-            if(newExtra[index].qty > 0) {
-                newExtra[index] = {...newExtra[index], qty: newExtra[index].qty - 1}
-            }
-            return newExtra;
-        })
+    const decrementExtra = (extraPrice, extraIndex, itemIndex, itemPrice, itemQty) => {
+        setCart(prevCart => prevCart.map((cartItem, index) => 
+            index === itemIndex ? {...cartItem, extra: cartItem.extra.map((item, index) => index === extraIndex ? {...item, qty: item.qty - 1}: item)} : cartItem
+        ))
     }
 
 
@@ -195,7 +188,7 @@ function Staff(){
                                 <div className="tline-top">
 
                                     <div className="tline-name">{item.name}</div>
-                                    <div className="tline-price">₦{(item.price * item.qty)}</div>
+                                    <div className="tline-price">₦{item.price * item.qty + item.extra.reduce((sum, e) => sum + e.price * e.qty, 0) * item.qty}</div>
                                 </div>
                                 <div className="tline-controls">
                                     <div className="tline-qty">
@@ -208,11 +201,11 @@ function Staff(){
 
                                 {/* Extra */}
                                 <div className="addon-row">
-                                    {extra.map((extra, index) => (
+                                    {item.extra.map((extra, extraIndex) => (
                                         <div key={generateUniquekey()}>
-                                            <button onClick={()=> decrementExtra(extra.price, index)} disabled={extra.qty === 0}>-</button>
+                                            <button onClick={()=> decrementExtra(extra.price, extraIndex, itemIndex, item.price, item.qty)} disabled={extra.qty === 0}>-</button>
                                             <span className='addon-pill' >{`${extra.name}: ${extra.qty}`}</span>
-                                            <button onClick={()=> IncrementExtra(extra.price, index)}>+</button>
+                                            <button onClick={()=> IncrementExtra(extra.price, extraIndex, itemIndex, item.price, item.qty)}>+</button>
                                         </div> 
                                     ))}
                                 </div>
