@@ -398,7 +398,7 @@
   .addon-row{display:flex; gap:6px; margin-top:9px; flex-wrap:wrap;}
   .addon-pill{
     font-size:11px; font-weight:800; padding:5px 10px; border-radius:14px;
-    border:none; color:var(--muted); background:var(--paper);
+    border:none; color:var(--muted); background: none;
   }
   .addon-row button{
     border: none;
@@ -414,7 +414,17 @@
     width: 130px;
     justify-content: space-between;
   }
-  .addon-pill.on{background:var(--amber); border-color:var(--amber); color:#3D2700;}
+  /* .addon-pill > .on{background:var(--amber); border-color:var(--amber); color:#3D2700;} */
+  
+  .on{
+    background:var(--amber);
+    border-color:var(--amber);
+    color: black;
+  }
+
+  .on span{
+    color: black;
+  }
 
   .ticket-footer{border-top:1.5px solid var(--ink); padding:16px 20px 18px; background:var(--paper);}
   .total-line{display:flex; justify-content:space-between; align-items:baseline; margin-bottom:14px;}
@@ -436,3 +446,13 @@
     letter-spacing:0.01em; margin-top:6px;
   }
   .place-btn:disabled{background:var(--faint); color:#fff;}
+
+  .paymentMethods{
+    width: 120px;
+    padding: 10px;
+    border-color: var(--line);
+  }
+
+  .paymentMethods:active {
+    border: none;
+  }
