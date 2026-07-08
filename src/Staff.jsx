@@ -47,7 +47,7 @@ function Staff(){
     //Handles meal clicked twice e.g Regular beef clicked twice
     const addOrIncrementItemQty = (newItem) => {
         setCart((prevCart) => {
-            const itemIndex = prevCart.findIndex(item => item.name === newItem.name)
+            const itemIndex = prevCart.findIndex(item => item.name === newItem.name && item.extra.every(extraItem => extraItem.qty === 0))
             if(itemIndex !== -1) {
                 // item exists, incremment qty
                 return prevCart.map((item, index) => index === itemIndex ? {...item, qty: item.qty + 1} : item)
@@ -68,6 +68,7 @@ function Staff(){
                 index === itemIndex ? {...item, qty: item.qty + 1} : item
             )
         )
+        setTotalItems(prev => prev + 1)
     };
 
     const decrementQty = (name, price, itemIndex) => {
@@ -80,6 +81,7 @@ function Staff(){
                 index === itemIndex ? {...item, qty: item.qty - 1} : item
             )
         )
+        setTotalItems(prev => prev - 1)
     }
 
     const totalPrice = cart.reduce((sum, item) => {
@@ -91,7 +93,6 @@ function Staff(){
         setCart(prevCart => prevCart.map((cartItem, index) => 
             index === itemIndex ? {...cartItem, extra: cartItem.extra.map((item, index) => index === extraIndex ? {...item, qty: item.qty + 1}: item)} : cartItem
         ))
-
     };
 
     const decrementExtra = (extraPrice, extraIndex, itemIndex, itemPrice, itemQty) => {
@@ -100,6 +101,27 @@ function Staff(){
         ))
     }
 
+    const removeItem = (itemIndex) => {
+        setCart(prevCart => prevCart.filter((item, index) => index !== itemIndex))
+        setTotalItems(prev=> prev - 1);
+    }
+
+    const paymentMethods = ['Transfer', 'Cash', 'Atm(pos)']
+    const [inputs, setInputs] = useState({textInput: '', selectedOption: 'None',});
+
+    const handleInputChange = (e) => {
+        const {name, value} = e.target;
+        setInputs((prevInputs) => ({
+            ...prevInputs, [name]: value,
+        }))
+    }
+
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        if(inputs.textInput.trim() === '' || inputs.selectedOption.trim() === 'None'){
+            alert('fill all inputs')
+        }
+    }
 
     return(
         <div className='phone'>
@@ -196,15 +218,15 @@ function Staff(){
                                         <span className="n">{item.qty}</span>
                                         <button onClick={() => incrementQty(item.name, item.price, itemIndex)}>+</button>
                                     </div>
-                                    <button className="tline-remove">Remove</button>
+                                    <button className="tline-remove" onClick={()=> removeItem(itemIndex)}>Remove</button>
                                 </div>
 
                                 {/* Extra */}
                                 <div className="addon-row">
                                     {item.extra.map((extra, extraIndex) => (
-                                        <div key={generateUniquekey()}>
+                                        <div key={generateUniquekey()} className={extra.qty >= 1 ? 'on' : ''}>
                                             <button onClick={()=> decrementExtra(extra.price, extraIndex, itemIndex, item.price, item.qty)} disabled={extra.qty === 0}>-</button>
-                                            <span className='addon-pill' >{`${extra.name}: ${extra.qty}`}</span>
+                                            <span className='addon-pill'>{`${extra.name}: ${extra.qty}`}</span>
                                             <button onClick={()=> IncrementExtra(extra.price, extraIndex, itemIndex, item.price, item.qty)}>+</button>
                                         </div> 
                                     ))}
@@ -222,16 +244,24 @@ function Staff(){
                     </div>
                     <div className="input-row">
                         <label className="input-label">Customer name</label>
-                        <input type="text" id="custName" placeholder="e.g. Chioma"/>
+                        <input type="text" name='textInput' id="custName" placeholder="e.g. Chioma" onChange={handleInputChange}/>
                     </div>
                     <div className="input-row">
                         <label className="input-label">Phone <span className="opt">(optional)</span></label>
                         <input type="tel" id="custPhone" placeholder="e.g. 080..."/>
                     </div>
-                    <button className="place-btn" id="placeBtn" disabled>Place order</button>
+                    <div className="input-row">
+                        <label className="input-label">Payment method</label>
+                        <select className='paymentMethods' name='selectedOption' onChange={handleInputChange}>
+                            <option value="None">None</option>
+                            {paymentMethods.map((item, index) => (
+                                <option key={index} value={item}>{item}</option>
+                            ))}
+                        </select>
+                    </div>
+                    <button className="place-btn" id="placeBtn" onClick={handleSubmit} disabled={inputs.selectedOption === 'None' || inputs.textInput === ''}>Place order</button>
                 </div>
             </div>
-
         </div>
     )
 }
