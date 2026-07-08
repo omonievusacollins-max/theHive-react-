@@ -1,14 +1,14 @@
 {
     "shawarma": [
-        {"name" :"regular beef", "price": 3800},
-        {"name" :"chicken", "price": 4000},
-        {"name" :"turkey", "price": 4500},
-        {"name" :"hive jumbo", "price": 5500},
-        {"name" :"hive combo", "price": 4500}
+        {"name" :"regular beef (shawarma)", "price": 3800},
+        {"name" :"chicken (shawarma)", "price": 4000},
+        {"name" :"turkey (shawarma)", "price": 4500},
+        {"name" :"hive jumbo (shawarma)", "price": 5500},
+        {"name" :"hive combo (shawarma)", "price": 4500}
     ],
     "burger": [
-         {"name" :"regular beef", "price": 3800},
-        {"name" :"cheese", "price": 4000},
+         {"name" :"regular beef (burger)", "price": 3800},
+        {"name" :"cheese (burger)", "price": 4000},
         {"name" :"double decker(no cheese)", "price": 4000},
         {"name" :"double decker(cheese)", "price": 4500}    
         ]
@@ -19,12 +19,12 @@
         {"name" :"pasta and turkey", "price": 7500}
     ],
     "sandwich":[
-        {"name" :"beef (Small)", "price": 3000},
-        {"name" :"beef (Large)", "price": 5000},
-        {"name" :"chicken (Small)", "price": 3300},
-        {"name" :"chicken (Large)", "price": 5300},
-        {"name" :"turkey (Small)", "price": 3800},
-        {"name" :"turkey (Large)", "price": 6000}
+        {"name" :"beef sandwich(Small)", "price": 3000},
+        {"name" :"beef sandwich(Large)", "price": 5000},
+        {"name" :"chicken sandwich(Small)", "price": 3300},
+        {"name" :"chicken sandwich(Large)", "price": 5300},
+        {"name" :"turkey sandwich(Small)", "price": 3800},
+        {"name" :"turkey sandwich(Large)", "price": 6000}
     ],
     "side dishes and extras":[
         {"name" :"hive special noodles", "price": 3000},
