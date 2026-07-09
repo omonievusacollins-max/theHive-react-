@@ -13,13 +13,9 @@ function Staff(){
     const [selectedCategory, setSelectedCategory] = useState('All');
     const [activeState, setActiveState] = useState('All');
     const [searchValue, setSearchValue] = useState('');
-    const [totalItems, setTotalItems] = useState(0);
     const [ticketDisplay, setTicketDisplay] = useState(false)
     const [displayDrawer, setDisplayDrawer] = useState(false)
-    const [itemQuantity, setItemQuantity] = useState(prev => prev + 1)
     const [cart, setCart] = useState([]);
-    const [countQty, setCountQty] = useState(cart)
-
 
     const handleClickedCategory = (category, index) => {
         setSelectedCategory(category);
@@ -34,13 +30,11 @@ function Staff(){
         return [category, filtereItems]
     }).filter(([category, filtereItems]) => filtereItems.length > 0) // remove empty arrays
 
-    let uid = 0
-
     // Add item to cart
     const addItem = (price, category, name) => {
         const extra = [{name: 'sausage', price: 500, qty: 0}, {name: 'cheese', price: 500, qty: 0}]
         addOrIncrementItemQty({name: name, price: price, extra: extra})
-        setTotalItems(prev=> prev + 1);
+        // setTotalItems(prev=> prev + 1);
         setTicketDisplay(true)
     }
 
@@ -61,28 +55,23 @@ function Staff(){
     // Increment qty for a specific item
     const incrementQty = (name, price, itemIndex) => {
         const item = cart[itemIndex];
-        const extrasTotal = item.extra.reduce((sum, e) => sum + e.price * e.qty, 0);
-        const unitCost = item.price + extrasTotal
         setCart((prevCart) =>
             prevCart.map((item, index) => 
                 index === itemIndex ? {...item, qty: item.qty + 1} : item
             )
         )
-        setTotalItems(prev => prev + 1)
     };
 
     const decrementQty = (name, price, itemIndex) => {
         const item = cart[itemIndex];
-        const extrasTotal = item.extra.reduce((sum, e) => sum + e.price * e.qty, 0);
-        console.log(extrasTotal)
-        const unitCost = item.price + extrasTotal
         setCart((prevCart) =>
             prevCart.map((item, index) => 
                 index === itemIndex ? {...item, qty: item.qty - 1} : item
             )
         )
-        setTotalItems(prev => prev - 1)
     }
+
+    const totalItems = cart.reduce((sum, item) => sum + item.qty, 0);
 
     const totalPrice = cart.reduce((sum, item) => {
         const extrasTotal = item.extra.reduce((s, e) => s + e.price * e.qty, 0);
@@ -103,7 +92,7 @@ function Staff(){
 
     const removeItem = (itemIndex) => {
         setCart(prevCart => prevCart.filter((item, index) => index !== itemIndex))
-        setTotalItems(prev=> prev - 1);
+        // setTotalItems(prev=> prev - 1);
     }
 
     const paymentMethods = ['Transfer', 'Cash', 'Atm(pos)']
@@ -134,7 +123,11 @@ function Staff(){
                     <div className="clock">4:32 PM</div>
                 </div>
                 <div className="topbar-title">New Order</div>
-                <div className="topbar-sub">Tap an item to add it to the ticket</div>
+                {/* <div className="topbar-sub">Tap an item to add it to the ticket</div> */}
+                <div className='buttons'>
+                    <button className='order'>New Order</button>
+                    <button className='orderQueue'>Order Queue</button>
+                </div>
             </div>
 
             
