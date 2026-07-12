@@ -123,6 +123,7 @@ function Staff(){
         e.preventDefault()
         if(inputs.textInput.trim() === '' || inputs.selectedOption.trim() === 'None'){
             alert('fill all inputs')
+            return
         }
 
         const $date = new Date();
@@ -145,6 +146,15 @@ function Staff(){
         }
 
         addDoc(collection(db, "orders"), newOrder)
+        .then( ()=> {
+          setInputs({textInput: '', selectedOption: 'None',});
+          setCart([]);
+          setDisplayDrawer(false);
+          }
+        )
+        .catch((error) => {
+          alert('could not save order pls try again')
+        })
     }
 
     const [toggle, setToggle] = useState(false);
