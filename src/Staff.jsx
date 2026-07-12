@@ -6,6 +6,10 @@ import { capitalizeWords } from './Utils/capitalizeFirstWords';
 import { generateUniquekey } from './Utils/generateUniqueKey';
 import OrderQueue from './OrderQueue';
 
+// import firebase/firestore
+import { collection, onSnapshot, addDoc } from "firebase/firestore";
+import { db } from "./firebase";
+
 function Staff(){
     const category = Object.keys(menu)
     const Menu = Object.entries(menu)
