@@ -1,0 +1,20 @@
+@import url('../THEHIVE/src/index.css');
+.logo{
+    width: 77.46px;
+    height: 60.89px;
+}
+
+.Burgerlogo{
+    width: 34.62px;
+    height: 28.99px;
+    margin-top: 30px;
+}
+
+.logoContainer{
+    /* width: 125px; */
+    width: 225px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}

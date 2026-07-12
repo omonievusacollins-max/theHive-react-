@@ -1,0 +1,67 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.orderTicket{
+    border: 1px solid red;
+    width: 350px;
+    margin: 20px auto 0;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.customerDetails{
+    /* border: 1px solid black; */
+    display: flex;
+    margin-bottom: 10px;
+}
+
+.customerPhoneNumber{
+    font-size: 15px;
+    margin-top: 15px;
+    letter-spacing: -1px;
+    color: #8A8580;
+}
+
+.customerName{
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.orderDetails{
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.orderDetails .amount{
+    color: #8A8580;
+    font-weight: bold;
+}
+
+.amountTime{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.amountTime div{
+    display: flex;
+}
+
+.amountTime div .paymentMethod{
+    margin: 12px 0 0 3px;
+    color: #8A8580;
+}
+
+.amountTime .amount{
+    font-size: 30px;
+}
+
+.dateTimeStamp{
+    display: flex;
+    /* border: 1px solid green; */
+    width: 130px;
+    justify-content: space-between;
+}

@@ -1,0 +1,34 @@
+@import url('../THEHIVE/src/index.css');
+
+.Container{
+    width: 442px;
+    height: 301px;
+    background-color: var(--white);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* justify-content: center; */
+    border-radius: 15px;
+}
+
+.Container p{
+    margin: 98px 0 72px 0;
+}
+
+.Buttons{
+    width: 336px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.Buttons Button {
+    width: 147px;
+    height: 47px;
+    color: var(--white);
+}
+
+.Buttons Button:first-child {
+    background-color: var(--primary);
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+}

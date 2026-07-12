@@ -1,0 +1,8 @@
+.AddContainer{
+    position: absolute;
+    top: 250px;
+    left: 50%;
+    transform: translate(-50%);
+    width: fit-content;
+    height: fit-content;
+}
