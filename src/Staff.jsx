@@ -132,8 +132,8 @@ function Staff(){
             date: newDate,
             time: [
                 {
-                hour: date.getHours(),
-                minutes: date.getMinutes()
+                hour: $date.getHours(),
+                minutes: $date.getMinutes()
                 }
             ]
                     
