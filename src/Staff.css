@@ -100,7 +100,9 @@
     /* margin-bottom:100px; */
     padding: 10px 10px 30px 10px;
     overflow-y: scroll;
-    height: 420px;
+    /* height: 530px; */
+    height: 70vh;
+    border: 1px solid green;
   }
 
   .cat-head{

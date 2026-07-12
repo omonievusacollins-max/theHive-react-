@@ -1,9 +1,10 @@
 import './Staff.css';
 import menu from './components/Table/menu.json'
 import Search from './components/Inputs/Search';
-import { use, useState } from 'react';
+import { use, useState, useEffect } from 'react';
 import { capitalizeWords } from './Utils/capitalizeFirstWords';
 import { generateUniquekey } from './Utils/generateUniqueKey';
+import OrderQueue from './OrderQueue';
 
 function Staff(){
     const category = Object.keys(menu)
@@ -34,7 +35,6 @@ function Staff(){
     const addItem = (price, category, name) => {
         const extra = [{name: 'sausage', price: 500, qty: 0}, {name: 'cheese', price: 500, qty: 0}]
         addOrIncrementItemQty({name: name, price: price, extra: extra})
-        // setTotalItems(prev=> prev + 1);
         setTicketDisplay(true)
     }
 
@@ -105,13 +105,45 @@ function Staff(){
         }))
     }
 
+    const [orderDetails, setOrderDetails] = useState(() => {
+        const saved = localStorage.getItem('orders');
+        return saved ? JSON.parse(saved) : [];
+    })
+
+    useEffect(() => {
+        localStorage.setItem('orders', JSON.stringify(orderDetails))
+    }, [orderDetails]);
+
     const handleSubmit = (e) => {
         e.preventDefault()
         if(inputs.textInput.trim() === '' || inputs.selectedOption.trim() === 'None'){
             alert('fill all inputs')
         }
+
+        const $date = new Date();
+        const newDate = $date.toISOString().slice(0, 10).replaceAll('-', '/');
+
+        const newOrder = {
+            customerName: inputs.textInput,
+            customerPhone: document.getElementById('custPhone').value,
+            cart: cart,
+            paymentMethod: inputs.selectedOption,
+            totalPrice: totalPrice,
+            date: newDate,
+            time: [
+                {
+                hour: date.getHours(),
+                minutes: date.getMinutes()
+                }
+            ]
+                    
+        }
+
+        setOrderDetails(prev => [...prev, newOrder])
     }
 
+    const [toggle, setToggle] = useState(false);
+    
     return(
         <div className='phone'>
             <div className="topbar">
@@ -125,14 +157,14 @@ function Staff(){
                 <div className="topbar-title">New Order</div>
                 {/* <div className="topbar-sub">Tap an item to add it to the ticket</div> */}
                 <div className='buttons'>
-                    <button className='order'>New Order</button>
-                    <button className='orderQueue'>Order Queue</button>
+                    <button className='order' onClick={() => setToggle(false)}>New Order</button>
+                    <button className='orderQueue' onClick={() => setToggle(true)}>Order Queue</button>
                 </div>
             </div>
-
-            
             {/* CONTROLS */}
-            <div className="controls">
+            <OrderQueue toggleDisplay={toggle} orderDetails={orderDetails}/>
+            <div style={{display: toggle === false ? '' : 'none'}}>
+                <div className="controls">
                 <Search paddingValue={'11px 14px 11px 36px'} placeholder={'Search Menu...'} searchTerm={searchValue} setSearchTerm={setSearchValue}/>
                 <div className="cat-rail">
                     <div className={activeState === 'All' ? 'active cat-pill' : 'cat-pill'} onClick={()=>{setActiveState('All'); setSelectedCategory('All')}}>All</div>
@@ -146,7 +178,7 @@ function Staff(){
 
 
             {/* MENU */}
-            <div className="cat-block">
+            <div className="cat-block" style={{display: toggle === false ? '' : 'none'}}>
                 {
                     searchFilterMenu.flatMap(([category, item]) => {
                         return [
@@ -255,6 +287,8 @@ function Staff(){
                     <button className="place-btn" id="placeBtn" onClick={handleSubmit} disabled={inputs.selectedOption === 'None' || inputs.textInput === ''}>Place order</button>
                 </div>
             </div>
+            </div>
+            
         </div>
     )
 }
