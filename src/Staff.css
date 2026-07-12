@@ -97,12 +97,9 @@
   }
   /* /////////////////Important cat block */
   .cat-block{
-    /* margin-bottom:100px; */
     padding: 10px 10px 30px 10px;
     overflow-y: scroll;
-    /* height: 530px; */
     height: 70vh;
-    border: 1px solid green;
   }
 
   .cat-head{
@@ -316,4 +313,8 @@
   }
   .buttons .order{
     background: var(--paper);
+  }
+  
+  .buttons .orderQueue {
+    background: #F7F4EE;
   }

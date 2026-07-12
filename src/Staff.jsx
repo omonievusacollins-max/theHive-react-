@@ -136,13 +136,8 @@ function Staff(){
             paymentMethod: inputs.selectedOption,
             totalPrice: totalPrice,
             date: newDate,
-            time: [
-                {
-                hour: $date.getHours(),
-                minutes: $date.getMinutes()
-                }
-            ]
-                    
+            hour: $date.getHours(),
+            minutes: $date.getMinutes()
         }
 
         addDoc(collection(db, "orders"), newOrder)
