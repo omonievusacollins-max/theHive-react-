@@ -109,14 +109,15 @@ function Staff(){
         }))
     }
 
-    const [orderDetails, setOrderDetails] = useState(() => {
-        const saved = localStorage.getItem('orders');
-        return saved ? JSON.parse(saved) : [];
-    })
+    const [orderDetails, setOrderDetails] = useState([]);
 
     useEffect(() => {
-        localStorage.setItem('orders', JSON.stringify(orderDetails))
-    }, [orderDetails]);
+    const unsubscribe = onSnapshot(collection(db, "orders"), (snapshot) => {
+        const orders = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+        setOrderDetails(orders);
+    });
+    return () => unsubscribe();
+    }, []);
 
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -143,7 +144,7 @@ function Staff(){
                     
         }
 
-        setOrderDetails(prev => [...prev, newOrder])
+        addDoc(collection(db, "orders"), newOrder)
     }
 
     const [toggle, setToggle] = useState(false);
