@@ -76,7 +76,7 @@ function OrderQueue({ toggleDisplay, orderDetails}) {
             ))}
             <div className="day-total" style={{ display: ordersForDay.length === 0 ? 'none' : '' }}>
                 <span>Total for {selectedDate}: </span>
-                <span>₦{dayTotal}</span>
+                <span style={{fontWeight: 'bold'}}>₦{dayTotal}</span>
             </div>
         </div>
     )
