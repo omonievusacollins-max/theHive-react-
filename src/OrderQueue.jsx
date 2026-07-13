@@ -1,43 +1,72 @@
 import './OrderQueue.css'
-import { generateUniquekey } from './Utils/generateUniqueKey'
-function OrderQueue({ toggleDisplay, orderDetails}){
+import { deleteDoc, doc } from 'firebase/firestore'
+import { db } from './firebase'
 
-    return(
-        <div style={{display: toggleDisplay === true ? '' : 'none'}}>
-            {orderDetails.map((order, index) => (
-                console.log(order),
-                <div className="orderTicket" key={index}>
-                <div className="customerDetails">
-                    <p className="customerName">{order.customerName}</p>
-                    <span className="customerPhoneNumber">{order.customerPhone}</span>
+function OrderQueue({ toggleDisplay, orderDetails }) {
+
+    const handleDelete = (id, customerName) => {
+        if (!window.confirm(`Remove ${customerName}'s order?`)) return
+        deleteDoc(doc(db, 'orders', id))
+    }
+
+    const payClass = (method) => {
+        if (method === 'Cash') return 'pay-cash'
+        if (method === 'Atm(pos)') return 'pay-pos'
+        return 'pay-transfer'
+    }
+
+    return (
+        <div className="queue-wrap" style={{ display: toggleDisplay ? '' : 'none' }}>
+            {orderDetails.length === 0 && (
+                <div className="queue-empty">
+                    <p>No orders yet</p>
+                    <span>New orders will land here the moment they're placed.</span>
                 </div>
+            )}
 
-                <div className="orderDetails">
+            {orderDetails.map((order) => (
+                <div className={`ticket ${payClass(order.paymentMethod)}`} key={order.id}>
+                    <button className="ticket-delete" onClick={() => handleDelete(order.id, order.customerName)} aria-label="Remove order">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                            <path d="M3 6h18M8 6V4a2 2 0 012-2h4a2 2 0 012 2v2m3 0v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6h14z"/>
+                        </svg>
+                    </button>
 
-                    {order.cart.map((item, index) => (
-                        <div>
-                            <div><span className="ItemQuantity" key={index+generateUniquekey}>{item.qty}</span> X <span className="Item">{item.name}</span> - <span className='amount'>{item.price}</span></div>
-                            {item.extra.map((extra, index) => (
-                                extra.qty === 0 ? '' : <div key={index+generateUniquekey} style={{color: '#8A8580'}}>extra <span>{extra.qty}</span> {extra.name}</div>
-                            ))}
+                    <div className="ticket-head">
+                        <span className="ticket-name">{order.customerName}</span>
+                        <span className="ticket-phone">{order.customerPhone}</span>
+                    </div>
+
+                    <div className="ticket-perf"></div>
+
+                    <div className="ticket-items">
+                        {order.cart.map((item, i) => (
+                            <div className="ticket-item" key={i}>
+                                <div className="item-line">
+                                    <span className="item-qty">{item.qty}×</span>
+                                    <span className="item-name">{item.name}</span>
+                                    <span className="item-price">₦{item.price * item.qty + item.extra.reduce((sum, e) => sum + e.price * e.qty, 0) * item.qty}</span>
+                                </div>
+                                {item.extra.filter(e => e.qty > 0).map((extra, j) => (
+                                    <div className="item-extra" key={j}>+ {extra.qty} {extra.name}</div>
+                                ))}
+                            </div>
+                        ))}
+                    </div>
+
+                    <div className="ticket-perf"></div>
+
+                    <div className="ticket-foot">
+                        <div className="ticket-foot-left">
+                            <span className="ticket-total">₦{order.totalPrice}</span>
+                            <span className={`ticket-pay ${payClass(order.paymentMethod)}`}>{order.paymentMethod}</span>
                         </div>
-                    ))}
-
-                </div>
-                {/* <hr style={{border:'0.5px dashed black'}}/> */}
-                <div style={{border:'0.2px dashed black'}}></div>
-                <div className="amountTime">
-                    <div>
-                        <p className="amount">{order.totalPrice}</p>
-                        <span className="paymentMethod">Transfer</span>
-                    </div>
-                    <div className="dateTimeStamp">
-                        <span className="date">{order.date}</span>
-                        <span className="time">{order.time} : {order.time}</span>,
-                        {console.log(order.date)}
+                        <div className="ticket-time">
+                            <span>{order.date}</span>
+                            <span>{String(order.hour).padStart(2, '0')}:{String(order.minutes).padStart(2, '0')}</span>
+                        </div>
                     </div>
                 </div>
-            </div>
             ))}
         </div>
     )

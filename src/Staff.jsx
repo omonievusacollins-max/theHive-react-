@@ -6,6 +6,10 @@ import { capitalizeWords } from './Utils/capitalizeFirstWords';
 import { generateUniquekey } from './Utils/generateUniqueKey';
 import OrderQueue from './OrderQueue';
 
+// import firebase/firestore
+import { collection, onSnapshot, addDoc } from "firebase/firestore";
+import { db } from "./firebase";
+
 function Staff(){
     const category = Object.keys(menu)
     const Menu = Object.entries(menu)
@@ -105,19 +109,21 @@ function Staff(){
         }))
     }
 
-    const [orderDetails, setOrderDetails] = useState(() => {
-        const saved = localStorage.getItem('orders');
-        return saved ? JSON.parse(saved) : [];
-    })
+    const [orderDetails, setOrderDetails] = useState([]);
 
     useEffect(() => {
-        localStorage.setItem('orders', JSON.stringify(orderDetails))
-    }, [orderDetails]);
+    const unsubscribe = onSnapshot(collection(db, "orders"), (snapshot) => {
+        const orders = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+        setOrderDetails(orders);
+    });
+    return () => unsubscribe();
+    }, []);
 
     const handleSubmit = (e) => {
         e.preventDefault()
         if(inputs.textInput.trim() === '' || inputs.selectedOption.trim() === 'None'){
             alert('fill all inputs')
+            return
         }
 
         const $date = new Date();
@@ -130,16 +136,20 @@ function Staff(){
             paymentMethod: inputs.selectedOption,
             totalPrice: totalPrice,
             date: newDate,
-            time: [
-                {
-                hour: $date.getHours(),
-                minutes: $date.getMinutes()
-                }
-            ]
-                    
+            hour: $date.getHours(),
+            minutes: $date.getMinutes()
         }
 
-        setOrderDetails(prev => [...prev, newOrder])
+        addDoc(collection(db, "orders"), newOrder)
+        .then( ()=> {
+          setInputs({textInput: '', selectedOption: 'None',});
+          setCart([]);
+          setDisplayDrawer(false);
+          }
+        )
+        .catch((error) => {
+          alert('could not save order pls try again')
+        })
     }
 
     const [toggle, setToggle] = useState(false);
