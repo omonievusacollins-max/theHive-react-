@@ -149,12 +149,12 @@ function Staff(){
             <div className="topbar">
                 <div className="topbar-row">
                     <div className="brand-tag">
-                        <div className="brand-mark">H</div>
-                        <div className="brand-word">Hive Staff</div>
+                        <div className="brand-mark"><img src="./assets/hiveLogo.png" alt="Hive logo" /></div>
+                        <div className="brand-word">Staff</div>
                     </div>
-                    <div className="clock">4:32 PM</div>
+                    {/* <div className="clock">4:32 PM</div> */}
                 </div>
-                <div className="topbar-title">New Order</div>
+                {/* <div className="topbar-title">New Order</div> */}
                 {/* <div className="topbar-sub">Tap an item to add it to the ticket</div> */}
                 <div className='buttons'>
                     <button className='order' onClick={() => setToggle(false)}>New Order</button>
