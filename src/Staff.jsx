@@ -127,7 +127,7 @@ function Staff(){
         }
 
         const $date = new Date();
-        const newDate = $date.toISOString().slice(0, 10).replaceAll('-', '/');
+        const newDate = $date.toISOString().slice(0, 10);
 
         const newOrder = {
             customerName: inputs.textInput,
