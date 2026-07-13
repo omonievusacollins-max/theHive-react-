@@ -149,3 +149,7 @@
     font-variant-numeric: tabular-nums;
     gap: 2px;
 }
+
+.datePicker {
+    width: 100px;
+}
