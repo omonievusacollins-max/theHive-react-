@@ -279,15 +279,15 @@ function Staff(){
                     </div>
                     <div className="input-row">
                         <label className="input-label">Customer name</label>
-                        <input type="text" name='textInput' id="custName" placeholder="e.g. Chioma" onChange={handleInputChange}/>
+                        <input type="text" name='textInput' id="custName" placeholder="e.g. Chioma" value={inputs.textInput} onChange={handleInputChange}/>
                     </div>
                     <div className="input-row">
                         <label className="input-label">Phone <span className="opt">(optional)</span></label>
-                        <input type="tel" id="custPhone" placeholder="e.g. 080..."/>
+                        <input type="tel" id="custPhone" placeholder="e.g. 080..." value={inputs.custPhone} onChange={handleInputChange}/>
                     </div>
                     <div className="input-row">
                         <label className="input-label">Payment method</label>
-                        <select className='paymentMethods' name='selectedOption' onChange={handleInputChange}>
+                        <select className='paymentMethods' name='selectedOption' value={inputs.selectedOption} onChange={handleInputChange}>
                             <option value="None">None</option>
                             {paymentMethods.map((item, index) => (
                                 <option key={index} value={item}>{item}</option>
