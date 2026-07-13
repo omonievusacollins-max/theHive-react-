@@ -145,7 +145,8 @@ function Staff(){
           setInputs({textInput: '', selectedOption: 'None',});
           setCart([]);
           setDisplayDrawer(false);
-          }
+          },
+          document.getElementById('custPhone').value = ''
         )
         .catch((error) => {
           alert('could not save order pls try again')
@@ -283,7 +284,7 @@ function Staff(){
                     </div>
                     <div className="input-row">
                         <label className="input-label">Phone <span className="opt">(optional)</span></label>
-                        <input type="tel" id="custPhone" placeholder="e.g. 080..." value={inputs.custPhone} onChange={handleInputChange}/>
+                        <input type="tel" id="custPhone" placeholder="e.g. 080..."  onChange={handleInputChange}/>
                     </div>
                     <div className="input-row">
                         <label className="input-label">Payment method</label>
