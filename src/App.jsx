@@ -14,7 +14,11 @@ import {useState} from 'react';
 import menu from '../src/components/Table/menu.json';
 import EditModal from './components/Modals/EditModal';
 import Staff from './Staff'
-
+// Authentication
+import { onAuthStateChanged } from 'firebase/auth';
+import { auth } from './firebase';
+import OwnerLogin from './OwnerLogin';
+import { useEffect } from 'react';
 
 function App() {
 
@@ -41,11 +45,19 @@ function App() {
     return item.name.toLowerCase().includes(searchTerm.toLowerCase())
   });
 
+  const [user, setUser] = useState(null);
 
+    useEffect(() => {
+        const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+            setUser(currentUser);
+        });
+        return () => unsubscribe();
+    }, []);
 
   return (
     <>
-    <Staff/>
+    {user ? <Staff /> : <OwnerLogin />};
+    
     {/* <header>
       <Logo className="logo"/>
       <div>

@@ -59,9 +59,37 @@
     background:repeating-linear-gradient(-45deg, var(--ink) 0 6px, transparent 6px 12px);
   } */
   .topbar-row{display:flex; align-items:center; justify-content:space-between; margin-bottom:2px;}
-  .brand-tag{display:flex; align-items:center; gap:7px;}
-  .brand-mark{width:20px; height:20px; background:var(--red); border-radius:5px; display:flex; align-items:center; justify-content:center; font-weight:900; font-size:11px; color:white; flex-shrink:0;}
-  .brand-word{font-size:11px; font-weight:800; letter-spacing:0.14em; color:var(--faint); text-transform:uppercase;}
+  .brand-tag{
+    display:flex;
+    align-items:center;
+    gap: 5px;
+    margin-bottom: 20px;
+  }
+  .brand-mark{
+    /* width:20px;
+    height:20px; */
+    border-radius:5px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:900;
+    font-size:11px;
+    color:white;
+    flex-shrink:0;
+  }
+
+  .brand-mark > img {
+    width: 35px;
+    height: 30px;
+  }
+  .brand-word{
+    font-size:11px;
+    font-weight:800;
+    letter-spacing:0.14em;
+    color:var(--faint);
+    text-transform:uppercase;
+    margin-top: 15px;
+  }
   .clock{font-size:11px; font-weight:700; color:var(--faint); font-variant-numeric:tabular-nums;}
   .topbar-title{font-size:23px; font-weight:900; letter-spacing:-0.5px; margin-top:6px;}
   .topbar-sub{font-size:12.5px; color:var(--faint); margin-top:2px; font-weight:500;}

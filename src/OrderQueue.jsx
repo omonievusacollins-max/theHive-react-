@@ -1,8 +1,9 @@
 import './OrderQueue.css'
 import { deleteDoc, doc } from 'firebase/firestore'
 import { db } from './firebase'
+import { useState } from 'react'
 
-function OrderQueue({ toggleDisplay, orderDetails }) {
+function OrderQueue({ toggleDisplay, orderDetails}) {
 
     const handleDelete = (id, customerName) => {
         if (!window.confirm(`Remove ${customerName}'s order?`)) return
@@ -15,16 +16,21 @@ function OrderQueue({ toggleDisplay, orderDetails }) {
         return 'pay-transfer'
     }
 
+    const [selectedDate, setSelectedDate] = useState(new Date().toISOString().slice(0, 10));
+    const ordersForDay = orderDetails.filter(order => order.date === selectedDate);
+    const dayTotal = ordersForDay.reduce((sum, order) => sum + order.totalPrice, 0);
+
     return (
         <div className="queue-wrap" style={{ display: toggleDisplay ? '' : 'none' }}>
-            {orderDetails.length === 0 && (
+            <input type="date" value={selectedDate} onChange={(e) => setSelectedDate(e.target.value)} className='datePicker'/>
+            {ordersForDay.length === 0 && (
                 <div className="queue-empty">
                     <p>No orders yet</p>
                     <span>New orders will land here the moment they're placed.</span>
                 </div>
             )}
 
-            {orderDetails.map((order) => (
+            {ordersForDay.map((order) => (
                 <div className={`ticket ${payClass(order.paymentMethod)}`} key={order.id}>
                     <button className="ticket-delete" onClick={() => handleDelete(order.id, order.customerName)} aria-label="Remove order">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -68,6 +74,10 @@ function OrderQueue({ toggleDisplay, orderDetails }) {
                     </div>
                 </div>
             ))}
+            <div className="day-total" style={{ display: ordersForDay.length === 0 ? 'none' : '' }}>
+                <span>Total for {selectedDate}: </span>
+                <span style={{fontWeight: 'bold'}}>₦{dayTotal}</span>
+            </div>
         </div>
     )
 }
