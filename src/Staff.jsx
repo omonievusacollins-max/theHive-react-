@@ -169,7 +169,7 @@ function Staff(){
                 {/* <div className="topbar-sub">Tap an item to add it to the ticket</div> */}
                 <div className='buttons'>
                     <button className='order' onClick={() => setToggle(false)}>New Order</button>
-                    <button className='orderQueue' onClick={() => setToggle(true)}>Order Queue</button>
+                    <button className='orderQueue' onClick={() => setToggle(true)}>Order Queue<span>{orderDetails.length}</span></button>
                 </div>
             </div>
             {/* CONTROLS */}
