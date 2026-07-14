@@ -119,6 +119,13 @@ function Staff(){
     return () => unsubscribe();
     }, []);
 
+    // Filter orders for today
+    const getTodaysDate = () => {
+        const today = new Date();
+        return today.toISOString().slice(0, 10);
+    };
+    const ordersForToday = orderDetails.filter(order => order.date === getTodaysDate());
+
     const handleSubmit = (e) => {
         e.preventDefault()
         if(inputs.textInput.trim() === '' || inputs.selectedOption.trim() === 'None'){
@@ -169,7 +176,7 @@ function Staff(){
                 {/* <div className="topbar-sub">Tap an item to add it to the ticket</div> */}
                 <div className='buttons'>
                     <button className='order' onClick={() => setToggle(false)}>New Order</button>
-                    <button className='orderQueue' onClick={() => setToggle(true)}>Order Queue<span>{orderDetails.length}</span></button>
+                    <button className='orderQueue' onClick={() => setToggle(true)}>Order Queue<span>{ordersForToday.length}</span></button>
                 </div>
             </div>
             {/* CONTROLS */}
