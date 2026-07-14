@@ -20,9 +20,22 @@ function OrderQueue({ toggleDisplay, orderDetails}) {
     const ordersForDay = orderDetails.filter(order => order.date === selectedDate);
     const dayTotal = ordersForDay.reduce((sum, order) => sum + order.totalPrice, 0);
 
+    const [visibility, setVisibility] = useState(false);
+
     return (
         <div className="queue-wrap" style={{ display: toggleDisplay ? '' : 'none' }}>
-            <input type="date" value={selectedDate} onChange={(e) => setSelectedDate(e.target.value)} className='datePicker'/>
+            <div className='topBar'>
+                <div className="day-total" style={{ display: ordersForDay.length === 0 ? 'none' : '' }}>
+                {/* <span>Total for {selectedDate}: </span> */}
+                <span style={{fontWeight: 'bold'}, {fontSize: '20px'}}>₦{visibility === true ? dayTotal : '****'}</span>
+
+                <img className='visibility' src={visibility === true ? './assets/visibility.svg' : './assets/visibilityOff.svg'} alt="" onClick={ () => setVisibility( prev => !prev)}/>
+
+                </div>
+                <input type="date" value={selectedDate} onChange={(e) => setSelectedDate(e.target.value)} className='datePicker'/>
+            </div>
+            
+
             {ordersForDay.length === 0 && (
                 <div className="queue-empty">
                     <p>No orders yet</p>
@@ -74,10 +87,6 @@ function OrderQueue({ toggleDisplay, orderDetails}) {
                     </div>
                 </div>
             ))}
-            <div className="day-total" style={{ display: ordersForDay.length === 0 ? 'none' : '' }}>
-                <span>Total for {selectedDate}: </span>
-                <span style={{fontWeight: 'bold'}}>₦{dayTotal}</span>
-            </div>
         </div>
     )
 }
