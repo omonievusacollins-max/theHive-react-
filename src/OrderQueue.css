@@ -149,3 +149,25 @@
     font-variant-numeric: tabular-nums;
     gap: 2px;
 }
+
+.datePicker {
+    width: 100px;
+}
+
+
+ .topBar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+ }
+
+.day-total{
+    display: flex;
+    align-items: center;
+    width: fit-content;
+}
+
+.visibility{
+    margin-top: 3px;
+    margin-left: 10px;
+}

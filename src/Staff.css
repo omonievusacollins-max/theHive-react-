@@ -61,6 +61,7 @@
     content:''; position:absolute; left:0; right:0; bottom:-1px; height:6px;
     background:repeating-linear-gradient(-45deg, var(--ink) 0 6px, transparent 6px 12px);
   } */
+<<<<<<< HEAD
   .topbar-row{
     display:flex;
     align-items:center;
@@ -76,6 +77,18 @@
     width:20px;
     height:20px;
     background:var(--red);
+=======
+  .topbar-row{display:flex; align-items:center; justify-content:space-between; margin-bottom:2px;}
+  .brand-tag{
+    display:flex;
+    align-items:center;
+    gap: 5px;
+    margin-bottom: 20px;
+  }
+  .brand-mark{
+    /* width:20px;
+    height:20px; */
+>>>>>>> ea1bba934182557ea08d78936ef8dc0c8d089d44
     border-radius:5px;
     display:flex;
     align-items:center;
@@ -85,12 +98,21 @@
     color:white;
     flex-shrink:0;
   }
+<<<<<<< HEAD
+=======
+
+  .brand-mark > img {
+    width: 35px;
+    height: 30px;
+  }
+>>>>>>> ea1bba934182557ea08d78936ef8dc0c8d089d44
   .brand-word{
     font-size:11px;
     font-weight:800;
     letter-spacing:0.14em;
     color:var(--faint);
     text-transform:uppercase;
+<<<<<<< HEAD
   }
   .clock{
     font-size:11px;
@@ -110,6 +132,13 @@
     margin-top:2px;
     font-weight:500;
   }
+=======
+    margin-top: 15px;
+  }
+  .clock{font-size:11px; font-weight:700; color:var(--faint); font-variant-numeric:tabular-nums;}
+  .topbar-title{font-size:23px; font-weight:900; letter-spacing:-0.5px; margin-top:6px;}
+  .topbar-sub{font-size:12.5px; color:var(--faint); margin-top:2px; font-weight:500;}
+>>>>>>> ea1bba934182557ea08d78936ef8dc0c8d089d44
 
   /* ===== SEARCH + CATEGORY RAIL ===== */
   .controls{

@@ -1,8 +1,9 @@
 import './OrderQueue.css'
 import { deleteDoc, doc } from 'firebase/firestore'
 import { db } from './firebase'
+import { useState } from 'react'
 
-function OrderQueue({ toggleDisplay, orderDetails }) {
+function OrderQueue({ toggleDisplay, orderDetails}) {
 
     //Function to delete order
     const handleDelete = (id, customerName) => {
@@ -16,16 +17,34 @@ function OrderQueue({ toggleDisplay, orderDetails }) {
         return 'pay-transfer'
     }
 
+    const [selectedDate, setSelectedDate] = useState(new Date().toISOString().slice(0, 10));
+    const ordersForDay = orderDetails.filter(order => order.date === selectedDate);
+    const dayTotal = ordersForDay.reduce((sum, order) => sum + order.totalPrice, 0);
+
+    const [visibility, setVisibility] = useState(false);
+
     return (
         <div className="queue-wrap" style={{ display: toggleDisplay ? '' : 'none' }}>
-            {orderDetails.length === 0 && (
+            <div className='topBar'>
+                <div className="day-total" style={{ display: ordersForDay.length === 0 ? 'none' : '' }}>
+                {/* <span>Total for {selectedDate}: </span> */}
+                <span style={{fontWeight: 'bold'}, {fontSize: '20px'}}>₦{visibility === true ? dayTotal : '****'}</span>
+
+                <img className='visibility' src={visibility === true ? './assets/visibility.svg' : './assets/visibilityOff.svg'} alt="" onClick={ () => setVisibility( prev => !prev)}/>
+
+                </div>
+                <input type="date" value={selectedDate} onChange={(e) => setSelectedDate(e.target.value)} className='datePicker'/>
+            </div>
+            
+
+            {ordersForDay.length === 0 && (
                 <div className="queue-empty">
                     <p>No orders yet</p>
                     <span>New orders will land here the moment they're placed.</span>
                 </div>
             )}
 
-            {orderDetails.map((order) => (
+            {ordersForDay.map((order) => (
                 <div className={`ticket ${payClass(order.paymentMethod)}`} key={order.id}>
                     <button className="ticket-delete" onClick={() => handleDelete(order.id, order.customerName)} aria-label="Remove order">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
