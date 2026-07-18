@@ -14,16 +14,11 @@ import {useState} from 'react';
 import menu from '../src/components/Table/menu.json';
 import EditModal from './components/Modals/EditModal';
 import Staff from './Staff'
-<<<<<<< HEAD
-import Admin from './Admin';
-
-=======
 // Authentication
 import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from './firebase';
 import OwnerLogin from './OwnerLogin';
 import { useEffect } from 'react';
->>>>>>> ea1bba934182557ea08d78936ef8dc0c8d089d44
 
 function App() {
 
@@ -61,10 +56,6 @@ function App() {
 
   return (
     <>
-<<<<<<< HEAD
-    <Staff/>
-    {/* <Admin/> */}
-=======
     {user ? <Staff /> : <OwnerLogin />};
     
     {/* <header>
@@ -108,7 +99,6 @@ function App() {
       </footer>
     </div> */}
 
->>>>>>> ea1bba934182557ea08d78936ef8dc0c8d089d44
     </>
   )
 }
