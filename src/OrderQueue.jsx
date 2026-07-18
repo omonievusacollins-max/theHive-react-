@@ -4,6 +4,7 @@ import { db } from './firebase'
 
 function OrderQueue({ toggleDisplay, orderDetails }) {
 
+    //Function to delete order
     const handleDelete = (id, customerName) => {
         if (!window.confirm(`Remove ${customerName}'s order?`)) return
         deleteDoc(doc(db, 'orders', id))
