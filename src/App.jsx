@@ -14,6 +14,7 @@ import {useState} from 'react';
 import menu from '../src/components/Table/menu.json';
 import EditModal from './components/Modals/EditModal';
 import Staff from './Staff'
+import Admin from './Admin';
 
 
 function App() {
@@ -46,47 +47,7 @@ function App() {
   return (
     <>
     <Staff/>
-    {/* <header>
-      <Logo className="logo"/>
-      <div>
-        <h1>Menu Management</h1>
-        <p>Manage your restaurant's Offerings</p>
-      </div>
-    </header> */}
-
-    {/* <div className='dashboard'>
-      <NavItem/>
-
-      <main>
-        <CardList/>
-        <div className='controlMenu'>
-          <div className='filter'>
-            <Search placeholder={'Search menu item'} searchTerm={searchTerm} setSearchTerm={setSearchTerm}/>
-            <CategoryDropDown dropDown={dropDown} setDropDown={setDropdown}/>
-          </div>
-
-          <Button enableHover={false} text={'Add New Item'} iconSrc={false}/>
-        </div>
-        <AddITem class='AddItem'/>
-        <MenuTable menu={filteredMenu}/>
-        <EditModal/>
-
-      </main>
-    </div>
-    <div className='footerContainer'>
-      <div className='AdminInfo'>
-        <img src="./assets/AdminImage.png" alt="" />
-        <div>
-          <h3 className='admin-name'>Admin Name</h3>
-          <p className='admin-role'>Admin Manager</p>
-        </div>
-      </div>
-      <footer className='footer'>
-        <hr />
-        <p>&copy; 2023 Menu Management. All rights reserved.</p>
-      </footer>
-    </div> */}
-
+    {/* <Admin/> */}
     </>
   )
 }
