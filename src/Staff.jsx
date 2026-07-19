@@ -1,5 +1,5 @@
 import './Staff.css';
-import menu from './components/Table/menu.json'
+import useMenu from './useMenu';
 import Search from './components/Inputs/Search';
 import { use, useState, useEffect } from 'react';
 import { capitalizeWords } from './Utils/capitalizeFirstWords';
@@ -11,6 +11,7 @@ import { collection, onSnapshot, addDoc } from "firebase/firestore";
 import { db } from "./firebase";
 
 function Staff(){
+    const menu = useMenu();
     const category = Object.keys(menu)
     const Menu = Object.entries(menu)
 
