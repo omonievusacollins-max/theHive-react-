@@ -1,5 +1,4 @@
 import './Staff.css';
-// import menu from './components/Table/menu.json'
 import useMenu from './useMenu';
 import Search from './components/Inputs/Search';
 import { use, useState, useEffect } from 'react';
