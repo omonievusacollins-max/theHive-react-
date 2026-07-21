@@ -1,6 +1,6 @@
 import './OrderQueue.css'
 import { deleteDoc, doc } from 'firebase/firestore'
-import { db } from './firebase'
+import { db } from '../firebase'
 import { useState } from 'react'
 
 function OrderQueue({ toggleDisplay, orderDetails}) {

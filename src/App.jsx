@@ -13,8 +13,8 @@ import MenuTable from './components/Table/MenuTable';
 import {useState} from 'react';
 import menu from '../src/components/Table/menu.json';
 import EditModal from './components/Modals/EditModal';
-import Staff from './Staff'
-import Admin from './Admin'
+import Staff from './Staff/Staff'
+import Admin from './Admin/Admin'
 // Authentication
 import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from './firebase';
