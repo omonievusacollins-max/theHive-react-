@@ -33,14 +33,6 @@ function MenuTable( {menu} ){
     return(
         <>
         <table className="menu-table">
-            <thead style={{borderRadius: '20px 20px 0 0'}}>
-                    <tr>
-                        <th className="itemDetails">Item Details</th>
-                        <th className="Category">Category</th>
-                        <th className="Price">Price</th>
-                        <th className="Actions">Actions</th>
-                    </tr>
-            </thead>
             <tbody>
                 {currentRows.map( meal => (
                     <tr key={meal.id}>

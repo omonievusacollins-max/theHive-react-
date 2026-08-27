@@ -14,6 +14,9 @@ import {useState} from 'react';
 import menu from '../components/Table/menu.json';
 import EditModal from '../components/Modals/EditModal';
 
+// Pages
+import MenuManagement from './MenuManagement'
+
 
 function Admin() {
 
@@ -44,7 +47,8 @@ function Admin() {
 
   return (
     <>
-    <header>
+    <MenuManagement/>
+    {/* <header>
       <Logo className="logo"/>
       <div>
         <h1>Menu Management</h1>
@@ -65,9 +69,9 @@ function Admin() {
 
           <Button enableHover={false} text={'Add New Item'} iconSrc={false}/>
         </div>
-        {/* <AddITem class='AddItem'/> */}
+        <AddITem class='AddItem'/>
         <MenuTable menu={filteredMenu}/>
-        {/* <EditModal/> */}
+        <EditModal/>
 
       </main>
     </div>
@@ -83,7 +87,7 @@ function Admin() {
         <hr />
         <p>&copy; 2023 Menu Management. All rights reserved.</p>
       </footer>
-    </div>
+    </div> */}
 
     </>
   )

@@ -20,6 +20,7 @@ import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from './firebase';
 import OwnerLogin from './OwnerLogin';
 import { useEffect } from 'react';
+import { Toaster } from 'react-hot-toast';
 
 function App() {
 
@@ -57,8 +58,21 @@ function App() {
 
   return (
     <>
-    {user ? <Staff /> : <OwnerLogin />};
-    {/* <Admin /> */}
+      <Toaster
+      position="top-right"
+      toastOptions={{
+      style: {
+          background: '#1a1a1a',   // Hive black
+          color: '#fff',
+          border: '1px solid #C0392B', // Hive red accent, adjust to your actual hex
+      },
+      success: {
+          iconTheme: { primary: '#C0392B', secondary: '#fff' },
+      },
+      }}
+    />
+    {/* {user ? <Staff /> : <OwnerLogin />}; */}
+    {user ? <Admin/> : <OwnerLogin />};
     </>
   )
 }

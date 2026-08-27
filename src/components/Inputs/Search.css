@@ -1,17 +1,14 @@
-/* @import url('../THEHIVE/src/index.css'); */
 .searchWrap{
-    /* width: 260px; */
-    /* height: 34px; */
     position: relative;
-    /* border: 1px solid green; */
     padding: 10px;
 }
 .search{
     width: 100%;
-    border-radius: 10px;
+    border-radius: 50px;
     border: 1px solid #E7E3DD;
     position: relative;
     background: none;
+    padding: 0 20px 0 40px;
 }
 
 .searchIcon{
@@ -19,7 +16,6 @@
     top: 50%;
     transform: translateY(-50%);
     left: 30px;
-    /* pointer-events: none; */
 }
 
 .search:focus{

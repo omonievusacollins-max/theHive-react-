@@ -12,14 +12,14 @@ function OwnerLogin() {
     const handleLogin = (e) => {
         e.preventDefault();
         setError('');
-        setLoading(true);
+        setLoading(true); // disable the button/show feedback while the request is in flight
 
-        signInWithEmailAndPassword(auth, email, password)
+        signInWithEmailAndPassword(auth, email, password) // sends the credentials to Firebase Auth's servers.
             .catch(() => {
                 setError('Wrong email or password');
             })
             .finally(() => {
-                setLoading(false);
+                setLoading(false); // turns off loading, whether it succeeded or failed.
             });
     };
 

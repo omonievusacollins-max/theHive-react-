@@ -171,10 +171,7 @@ function Staff(){
                         <div className="brand-mark"><img src="./assets/hiveLogo.png" alt="Hive logo" /></div>
                         <div className="brand-word">Staff</div>
                     </div>
-                    {/* <div className="clock">4:32 PM</div> */}
                 </div>
-                {/* <div className="topbar-title">New Order</div> */}
-                {/* <div className="topbar-sub">Tap an item to add it to the ticket</div> */}
                 <div className='buttons'>
                     <button className='order' onClick={() => setToggle(false)}>New Order</button>
                     <button className='orderQueue' onClick={() => setToggle(true)}>Order Queue<span className='orderForToday'>{ordersForToday.length}</span></button>

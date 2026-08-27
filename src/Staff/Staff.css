@@ -31,9 +31,9 @@
     overscroll-behavior:none;
   }
 
-  #root{
+  /* #root{
     background-color: var(--ink);
-  }
+  } */
 
   .phone{
     max-width:420px; margin:0 auto;

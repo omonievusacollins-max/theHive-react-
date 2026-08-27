@@ -1,4 +1,4 @@
-@import url('../index.css');
+/* @import url('../index.css');
 
 header{
   display: flex;
@@ -50,7 +50,6 @@ main{
 
 .footer{
   width: 100%;
-  /* border: 1px solid brown; */
   margin: 0 132px 0 0;
   display: flex;
   justify-content: space-between;
@@ -66,14 +65,12 @@ main{
   width: 319px;
   height: 139px;
   background-color: var(--secondary-color);
-  /* border: 1px solid orangered; */
 }
 
 .footerContainer{
   display: flex;
-  /* border: 1px solid green; */
   align-items: start;
   gap: 95px;
   height: 139px;
   margin-top: 36px;
-}
+} */
