@@ -27,17 +27,6 @@ function MenuManagement() {
     
     const menu = useMenu();
     
-    // const formattedMenu = Object.entries(menuu).flatMap(
-    //     ([category, items]) =>
-    //         items.map((item, index) => ({
-    //         id: `${category}-${index}`,
-    //         name: item.name,
-    //         category,
-    //         price: item.price
-    //         }))
-    //     ); // Flatten the menu into an array of items with category information
-    //     //
-
     const handleClickedCategory = (category, index) => {
         setSelectedCategory(category);
         setActiveState(index);
@@ -162,9 +151,6 @@ function MenuManagement() {
                 <div>
 
                 </div>
-                {/* {displayEditModal && <EditModal onClose={()=> setDisplayEditModal(false)}/>}
-                {saveModal && <SaveItem onClose={()=> setSaveModal(false)}/>} */}
-                {/* <EditModal/> */}
                 {displayEditModal && (
                     <EditModal
                         initialValues={selectedItem}
