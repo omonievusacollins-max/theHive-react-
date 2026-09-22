@@ -64,6 +64,14 @@ function MenuManagement() {
     const [searchTerm, setSearchTerm] = useState('');
     const [user, setUser] = useState(null);
     const [selectedItem, setSelectedItem] = useState(null);
+    const [activeState, setActiveState] = useState('All');
+    const [selectedCategory, setSelectedCategory] = useState('All');
+    const [searchValue, setSearchValue] = useState('');
+    const [toggle, setToggle] = useState(false);
+    const [displayEditModal, setDisplayEditModal] = useState(false);
+    const [displayDeleteModal, setdDisplayDeleteModal] = useState(false)
+    const [mealName, setMealName] = useState('')
+    const [mealPrice, setMealPrice] = useState('')
 
         useEffect(() => {
             const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
@@ -72,11 +80,6 @@ function MenuManagement() {
             return () => unsubscribe();
         }, []);
 
-        
-    const [activeState, setActiveState] = useState('All');
-    const [selectedCategory, setSelectedCategory] = useState('All');
-    const [searchValue, setSearchValue] = useState('');
-    const [toggle, setToggle] = useState(false);
 
     // Filters
     const filteredMenu = selectedCategory === 'All' ? Menu : Menu.filter(([category, items])=> category === selectedCategory);
@@ -87,14 +90,9 @@ function MenuManagement() {
     }).filter(([category, filtereItems]) => filtereItems.length > 0) // remove empty arrays
     // console.log(`searchFilterMenu `, searchFilterMenu)
 
-    const [displayEditModal, setDisplayEditModal] = useState(false);
-    const [saveModal, setSaveModal] = useState(false)
-    const [mealName, setMealName] = useState('')
-    const [mealPrice, setMealPrice] = useState('')
-
     return(
         <>
-            {(saveModal || displayEditModal) && <div className='overlay'></div>}
+            {(displayDeleteModal || displayEditModal) && <div className='overlay'></div>}
             <header>
                 <Logo className="logo"/>
                 <div>
@@ -136,8 +134,11 @@ function MenuManagement() {
                                             
 
                                             <div className="update-btn">
-                                                <img src="../assets/redBinIcon.svg" alt="delete" onClick={() => (setSaveModal(true), setSelectedItem(meal))}/>
-                                                <img src="../assets/greenEditIcon.svg" alt="edit" onClick={ ()=> {setDisplayEditModal(true); setMealName(meal.name); setMealPrice(meal.price); setSelectedItem(meal);}}/>
+                                                <img src="../assets/redBinIcon.svg" alt="delete" onClick={() => (setdDisplayDeleteModal(true), setSelectedItem(meal))}/>
+                                                <img src="../assets/greenEditIcon.svg" alt="edit" onClick={ ()=> {setDisplayEditModal(true);
+                                                    setMealName(meal.name); 
+                                                    setMealPrice(meal.price);
+                                                    setSelectedItem(meal);}}/>
                                             </div>
                                         </div>
                                     ))
@@ -158,10 +159,10 @@ function MenuManagement() {
                         onClose={() => setDisplayEditModal(false)}
                     />
                 )}
-                {saveModal && (
+                {displayDeleteModal && (
                     <SaveItem
                         onSave={handleDeleteConfirm}
-                        onClose={() => setSaveModal(false)}
+                        onClose={() => setdDisplayDeleteModal(false)}
                     />
                 )}
             </main>

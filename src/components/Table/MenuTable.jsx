@@ -19,7 +19,7 @@ function MenuTable( {menu} ){
 
     }
 
-      // Reset to page 1 whenever filtered menu changes
+    // Reset to page 1 whenever filtered menu changes
     useEffect(() => {
         setCurrentPage(1)
     }, [menu])
