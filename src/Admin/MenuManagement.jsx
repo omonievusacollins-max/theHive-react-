@@ -10,10 +10,10 @@ import MenuTable from '../components/Table/MenuTable';
 import EditModal from '../components/Modals/EditModal';
 import { capitalizeWords } from '../Utils/capitalizeFirstWords';
 import { onAuthStateChanged } from 'firebase/auth';
-import { auth } from '../firebase';
+import { auth } from '../services/firebase';
 import SaveItem from '../components/Cards/SaveItem';
 import {doc, updateDoc, deleteDoc} from 'firebase/firestore';
-import { db } from '../firebase';
+import { db } from '../services/firebase';
 import Toast from 'react-hot-toast';
 
 
