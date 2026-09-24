@@ -1,7 +1,7 @@
 // Reusable form for collecting item name, price, and category.
-import Button from '../Buttons/Button';
+import Button from '../Buttons/Button.jsx';
 import './EditModal.css';
-import CategoryDropdown from '../Inputs/CategoryDropDown';
+import CategoryDropdown from '../Inputs/CategoryDropDown.jsx';
 import {useState, useEffect} from 'react';
 
     function EditModal({initialValues, onSave, onClose}){

@@ -1,21 +1,21 @@
 import './Admin.css';
 // import Button from './components/Button';
-import Card from '../components/Cards/Card';
-import Logo from '../components/Cards/Logo'
-import NavItem from '../components/Buttons/NavItem';
-import CategoryCard from '../components/Cards/CategoryCard';
-import SaveItem from '../components/Cards/SaveItem';
-import Button from '../components/Buttons/Button';
-import Search from '../components/Inputs/Search';
-import CardList from '../components/Cards/CardList';
-import CategoryDropDown from '../components/Inputs/CategoryDropDown';
-import MenuTable from '../components/Table/MenuTable';
+import Card from '../components/Cards/Card.jsx';
+import Logo from '../components/Cards/Logo.jsx'
+import NavItem from '../components/Buttons/NavItem.jsx';
+import CategoryCard from '../components/Cards/CategoryCard.jsx';
+import SaveItem from '../components/Cards/SaveItem.jsx';
+// import Button from '../components/Buttons/Button';
+import Search from '../components/Inputs/Search.jsx';
+import CardList from '../components/Cards/CardList.jsx';
+import CategoryDropDown from '../components/Inputs/CategoryDropDown.jsx';
+import MenuTable from '../components/Table/MenuTable.jsx';
 import {useState} from 'react';
 import menu from '../components/Table/menu.json';
-import EditModal from '../components/Modals/EditModal';
+import EditModal from '../components/Modals/EditModal.jsx';
 
 // Pages
-import MenuManagement from './MenuManagement'
+import MenuManagement from './MenuManagement.jsx'
 
 
 function Admin() {

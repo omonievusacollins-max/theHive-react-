@@ -1,5 +1,5 @@
 import './NavItem.css'
-import Button from './Button'
+import Button from './Button.jsx'
 function NavItem(){
     // const iconString = icon;
     return(

@@ -12,7 +12,7 @@ const Button = ({ text, onClick, iconWhite, iconGrey, enableHover=true, iconSrc}
             {iconSrc &&<img src={isHovered ? iconWhite : iconGrey} alt="" />}
             {text} 
         </button>
-    );l+
+    );
 }
 export default Button
 

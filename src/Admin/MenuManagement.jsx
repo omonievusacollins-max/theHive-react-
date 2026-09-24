@@ -1,19 +1,19 @@
 
 import { use, useState, useEffect } from 'react';
-import CategoryDropDown from '../components/Inputs/CategoryDropDown';
-import Logo from '../components/Cards/Logo'
-import CardList from '../components/Cards/CardList';
-import Button from '../components/Buttons/Button';
-import Search from '../components/Inputs/Search';
-import AddITem from '../components/Cards/ItemForm';
-import MenuTable from '../components/Table/MenuTable';
-import EditModal from '../components/Modals/EditModal';
-import { capitalizeWords } from '../Utils/capitalizeFirstWords';
+import CategoryDropDown from '../components/Inputs/CategoryDropDown.jsx';
+import Logo from '../components/Cards/Logo.jsx'
+import CardList from '../components/Cards/CardList.jsx';
+import Button from '../components/Buttons/Button.jsx';
+import Search from '../components/Inputs/Search.jsx';
+import AddITem from '../components/Cards/ItemForm.jsx';
+import MenuTable from '../components/Table/MenuTable.jsx';
+import EditModal from '../components/Modals/EditModal.jsx';
+import { capitalizeWords } from '../Utils/capitalizeFirstWords.js';
 import { onAuthStateChanged } from 'firebase/auth';
-import { auth } from '../services/firebase';
-import SaveItem from '../components/Cards/SaveItem';
+import { auth } from '../services/firebase.js';
+import SaveItem from '../components/Cards/SaveItem.jsx';
 import {doc, updateDoc, deleteDoc} from 'firebase/firestore';
-import { db } from '../services/firebase';
+import { db } from '../services/firebase.js';
 import Toast from 'react-hot-toast';
 
 
@@ -21,7 +21,7 @@ import Toast from 'react-hot-toast';
 import './MenuManagement.css'
 
 // Menu
-import useMenu from '../useMenu';
+import useMenu from '../hooks/useMenu.js';
 
 function MenuManagement() {
     

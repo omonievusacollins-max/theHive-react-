@@ -1,7 +1,7 @@
 // Reusable form for collecting item name, price, and category.
-import Button from '../Buttons/Button';
+import Button from '../Buttons/Button.jsx';
 import './ItemForm.css';
-import CategoryDropdown from '../Inputs/CategoryDropDown';
+import CategoryDropdown from '../Inputs/CategoryDropDown.jsx';
 import {useState} from 'react';
 
     function AddITem({onSave, onClose}){

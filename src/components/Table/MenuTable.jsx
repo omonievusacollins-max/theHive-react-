@@ -5,9 +5,9 @@ import sandwichIcon from '/assets/sandwich.svg' // import the sandwich icon
 import shawarmaIcon from '/assets/shawarmaIcon.svg' // import the shawarma icon
 import pastaIcon from '/assets/spaghettiIcon.svg' // import the spaghetti icon
 import sidedishIcon from '/assets/sideDishes.svg' // import the side dishes icon
-import Search from '../Inputs/Search';
+import Search from '../Inputs/Search.jsx';
 import { useState, useEffect } from "react";
-import AddITem from '../Cards/ItemForm';
+import AddITem from '../Cards/ItemForm.jsx';
 
 function MenuTable( {menu} ){
     const categoryIcons = {

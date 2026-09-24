@@ -28,12 +28,12 @@ import './App.css';
 import {useState} from 'react';
 // import menu from '../src/components/Table/menu.json';
 // import EditModal from './components/Modals/EditModal';
-import Staff from './Staff/Staff'
-import Admin from './Admin/Admin'
+import Staff from './Staff/Staff.jsx'
+import Admin from './Admin/Admin.jsx'
 // Authentication
 import { onAuthStateChanged } from 'firebase/auth';
-import { auth } from './firebase';
-import OwnerLogin from './OwnerLogin';
+import { auth } from './services/firebase.js';
+import OwnerLogin from './OwnerLogin.jsx';
 import { useEffect } from 'react';
 import { Toaster } from 'react-hot-toast';
 

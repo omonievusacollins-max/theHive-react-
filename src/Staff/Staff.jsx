@@ -1,14 +1,14 @@
 import './Staff.css';
-import useMenu from '../useMenu';
-import Search from '../components/Inputs/Search';
+import useMenu from '../hooks/useMenu.js';
+import Search from '../components/Inputs/Search.jsx';
 import { use, useState, useEffect } from 'react';
-import { capitalizeWords } from '../Utils/capitalizeFirstWords';
-import { generateUniquekey } from '../Utils/generateUniqueKey';
-import OrderQueue from './OrderQueue';
+import { capitalizeWords } from '../Utils/capitalizeFirstWords.js';
+import { generateUniquekey } from '../Utils/generateUniqueKey.js';
+import OrderQueue from './OrderQueue.jsx';
 
 // import firebase/firestore
 import { collection, onSnapshot, addDoc } from "firebase/firestore";
-import { db } from "../firebase";
+import { db } from "../services/firebase.js";
 
 function Staff(){
     const menu = useMenu();
