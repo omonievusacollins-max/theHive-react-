@@ -1,5 +1,5 @@
 import React from "react";
-import "./button.css";
+import "./Button.css";
 import { useState } from "react";
 
 const Button = ({ text, onClick, iconWhite, iconGrey, enableHover=true, iconSrc}) => {
