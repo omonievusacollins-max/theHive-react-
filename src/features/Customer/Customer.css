@@ -15,3 +15,45 @@
   margin-top: 20px;
   border: 1px solid blue;
 }
+
+.banner {
+  border: 1px solid blue;
+  width: calc(100% - 20px);
+  margin: 10px auto 0 auto;
+  padding: 10px;
+  border-radius: 20px;
+  position: relative;
+}
+
+.banner .taste {
+  border: 1px solid brown;
+  display: flex;
+  border-radius: 20px;
+  width: fit-content;
+  padding: 5px;
+}
+
+.banner p {
+  font-size: 10px;
+}
+
+.banner .happyBurger{
+  position: absolute;
+  border: 1px solid orangered;
+  top: -50px;
+  right: 5px;
+  /* width: 120px; */
+}
+
+.searchContainer{
+  border: 1px dashed red;
+  display: flex;
+  justify-content: center;
+}
+
+.search{
+  height: 50px;
+  width: calc(100% - 20px);
+  border: 1px dashed grey;
+  margin: auto;
+}
