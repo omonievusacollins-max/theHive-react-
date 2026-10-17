@@ -1,3 +1,7 @@
+/* .body{
+  overflow: hidden;
+} */
+
 .logoContainer{
   display: flex;
   justify-content: space-between;
@@ -17,20 +21,29 @@
 }
 
 .banner {
-  border: 1px solid blue;
   width: calc(100% - 20px);
+  height: 195px;
   margin: 10px auto 0 auto;
-  padding: 10px;
-  border-radius: 20px;
   position: relative;
+  background: linear-gradient(120.69deg, #FF3B00 8.08%, #BA0013 81.17%);
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 10px;
+  gap: 2px;
+  color: var(--white);
 }
 
 .banner .taste {
   border: 1px solid brown;
   display: flex;
   border-radius: 20px;
-  width: fit-content;
+  width: 170px;
   padding: 5px;
+  justify-content: space-around;
+  color: var(--white);
 }
 
 .banner p {
@@ -39,10 +52,10 @@
 
 .banner .happyBurger{
   position: absolute;
-  border: 1px solid orangered;
+  /* border: 1px solid orangered; */
   top: -50px;
   right: 5px;
-  /* width: 120px; */
+  width: 120px;
 }
 
 .searchContainer{
@@ -56,4 +69,37 @@
   width: calc(100% - 20px);
   border: 1px dashed grey;
   margin: auto;
+}
+
+.mealList{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.mealContainer{
+  /* border: 1px solid blue; */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  gap: 12px;
+  isolation: isolate;
+  width: calc(100vw - 20px);
+  height: 80px;
+  background: #FFFFFF;
+  margin: auto;
+}
+
+.mealPrice{
+  color: var(--redBrown);
+}
+
+.addBtnContainer{
+  /* Container */
+  background: var(--redBrown);
+  width: 50px;
+  height: 50px;
+  display: flex;
+  /* justify-content: center; */
 }
