@@ -1,12 +1,13 @@
 .bottomNavContainer{
   display: flex;
-  border: 1px solid green;
+  /* border: 1px solid green; */
   justify-content: space-between;
   padding: 5px 20px;
   position: fixed;
   bottom: 0;
   left: 0;
   right: 0;
+  background: var(--white);
 }
 
 .bottomNavContainer div {

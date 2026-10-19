@@ -10,23 +10,37 @@ theHive/
 ├─ public/
 │  └─ assets/
 ├─ src/
-│  ├─ AbandonedScripts.md
 │  ├─ App.css
 │  ├─ App.jsx
-│  ├─ firebase.js
 │  ├─ index.css
 │  ├─ main.jsx
-│  ├─ OwnerLogin.css
-│  ├─ OwnerLogin.jsx
-│  ├─ useMenu.js
 │  ├─ Utils/
 │  │  ├─ capitalizeFirstWords.js
 │  │  └─ generateUniqueKey.js
-│  ├─ Admin/
-│  │  ├─ Admin.css
-│  │  ├─ Admin.jsx
-│  │  ├─ MenuManagement.css
-│  │  └─ MenuManagement.jsx
+│  ├─ services/
+│  │  └─ firebase.js
+│  ├─ hooks/
+│  │  └─ useMenu.js
+│  ├─ features
+│  │  ├─ Admin/
+│  │  │   ├─ Admin.css
+│  │  │   ├─ Admin.jsx
+│  │  │   ├─ MenuManagement.css
+│  │  │   ├─ MenuManagement.jsx
+│  │  │   ├─ OwnerLogin.jsx
+│  │  │   └─ OwnerLogin.css
+│  │  ├─ Customer/
+│  │     ├─ Components/
+│  │     │   ├─ ButtonNav.jsx
+│  │     │   ├─ ButtonNav.css
+│  │     │   ├─ CategoryPill.jsx
+│  │     │   ├─ CategoryPill.css
+│  │     │   ├─ Header.jsx
+│  │     │   └─ Header.css
+│  │     ├─ Customer.css
+│  │     ├─ Customer.jsx
+│  │     ├─ Menu.css
+│  │     └─ Menu.jsx
 │  ├─ Staff/
 │  │  ├─ OrderQueue.css
 │  │  ├─ OrderQueue.jsx

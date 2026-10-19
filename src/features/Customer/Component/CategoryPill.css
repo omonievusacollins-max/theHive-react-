@@ -1,7 +1,7 @@
 .pillsContainer{
   padding: 0 10px;
   overflow-x: scroll;
-  border: 2px dashed orangered;
+  /* border: 2px dashed orangered; */
 }
 
 .pillsContainer::-webkit-scrollbar{
@@ -11,8 +11,8 @@
 .pills {
   display: flex;
   gap: 18px;
-  width: 550px;
-  border: 1px solid green;
+  width: 800px;
+  /* border: 1px solid green; */
   padding: 5px 0;
 }
 
@@ -23,6 +23,10 @@
   width: 120px;
   height: 48px;
   border-radius: 9999px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
 }
 
 .pills .activePill {

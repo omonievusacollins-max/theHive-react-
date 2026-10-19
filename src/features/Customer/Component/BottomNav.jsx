@@ -15,7 +15,7 @@ function BottomNav(){
     return (
         <nav className="bottomNavContainer">
           
-          <NavLink to="/menu" className="menu">
+          <NavLink to="/Menu" className="menu">
             {({isActive}) => (
             <>
               <img src={isActive ? cutlerriesRed : cutlerriesGrey} alt="cutlerries"/>
@@ -24,7 +24,7 @@ function BottomNav(){
             )}
           </NavLink>
           
-          <NavLink to="/cart" className="cart">
+          <NavLink to="../Cart.jsx" className="cart">
             {({isActive}) => (
             <>
               <img src={isActive ? cartRed : cartGrey} alt="cart"/>
@@ -33,7 +33,7 @@ function BottomNav(){
             )}
           </NavLink>
           
-          <NavLink to="/order" className="order">
+          <NavLink to="/Order" className="order">
             {({isActive}) => (
             <>
               <img src={isActive ? receiptRed : receiptGrey} alt="reciept"/>

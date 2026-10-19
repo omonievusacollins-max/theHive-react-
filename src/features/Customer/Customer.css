@@ -5,19 +5,20 @@
 .logoContainer{
   display: flex;
   justify-content: space-between;
-  border: 1px solid black;
+  /* border: 1px solid black; */
   padding: 5px 10px;
+  background: var(--white);
 }
 
 .logoContainer div {
   display: flex;
   align-items: center;
-  border: 1px solid red;
+  /* border: 1px solid red; */
 }
 
 .logoContainer p {
   margin-top: 20px;
-  border: 1px solid blue;
+  /* border: 1px solid blue; */
 }
 
 .banner {
@@ -53,13 +54,13 @@
 .banner .happyBurger{
   position: absolute;
   /* border: 1px solid orangered; */
-  top: -50px;
-  right: 5px;
+  top: -20px;
+  right: 4px;
   width: 120px;
 }
 
 .searchContainer{
-  border: 1px dashed red;
+  /* border: 1px dashed red; */
   display: flex;
   justify-content: center;
 }
@@ -75,6 +76,7 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
+  padding: 10px 0 65px 0;
 }
 
 .mealContainer{
@@ -101,5 +103,7 @@
   width: 50px;
   height: 50px;
   display: flex;
-  /* justify-content: center; */
+  justify-content: center;
+  align-items: center;
+  border-radius: 999px;
 }
