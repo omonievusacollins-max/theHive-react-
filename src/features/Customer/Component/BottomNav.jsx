@@ -24,7 +24,7 @@ function BottomNav(){
             )}
           </NavLink>
           
-          <NavLink to="../Cart.jsx" className="cart">
+          <NavLink to="../Cart" className="cart">
             {({isActive}) => (
             <>
               <img src={isActive ? cartRed : cartGrey} alt="cart"/>

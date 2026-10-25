@@ -5,23 +5,23 @@ import useMenu from '../../../hooks/useMenu.js'
 // Icons outside so it can run for every rerender.
 const icons = {
     shawarma:{
-      // brown: '/assets/shawarmaIcon.svg',
-      brown: '/assets/shawarmaIcon2.svg' },
+      brown: '/assets/shawarmaIcon2.svg',
+      black: '/assets/shawarmaIcon2Black.svg' },
     burger:{
-      brown: '/assets/burgerIcon.svg' 
-      // black: '/assets/burgerIcon2.svg'
+      brown: '/assets/burgerIcon.svg', 
+      black: '/assets/burgerIconBlack.svg'
     },
     pasta:{
-      brown: '/assets/pastaIcon.svg'
-      // black: '/assets/pastaIcon2.svg' 
+      brown: '/assets/pastaIcon.svg',
+      black: '/assets/pastaIconBlack.svg'
     },
     sandwich:{
-      brown: '/assets/sandwichIcon.svg'
-      // black: '/assets/sandwichIcon2.svg'
+      brown: '/assets/sandwichIcon.svg',
+      black: '/assets/sandwichIconBlack.svg'
     },
     'side dishes and extras':{
-      brown: '/assets/Icon(6).svg'   
-      // black: '/assets/Icon(6).svg'
+      brown: '/assets/sideDishes.svg',  
+      black: '/assets/sideDishesBlack.svg'
       },
   }
 
@@ -31,17 +31,6 @@ function CategoryPill({activeState}) {
   const menu = useMenu()
   const category = Object.keys(menu);
   const [active, setActive] = useState('all')
-  
-  // Pill icons
-  // Brown
-  const sidedishesIconBrown = "/assets/Icon(6).svg"
-  const burgerIconBrown = '/assets/burgerIcon.svg'
-  const sandwichIconBrown = '/assets/sandwichIcon.svg'
-  const pastaIconBrown = '/assets/pastaIcon.svg'
-  
-  // Black
-  const shawarmaIconBlack = '/assets/shawarmaIcon2.svg'
-
   
   return(
     <div className="pillsContainer">
@@ -57,7 +46,7 @@ function CategoryPill({activeState}) {
           
           <button key={label} className={active === label ? "pill activePill" : "pill"} onClick = { () => {setActive(label)
             activeState(label)}}>
-            <img src={icon.brown} alt="icon"/>
+            <img src = {active === label ? icon.black : icon.brown} alt="icon"/>
             {label}
         </button>
          )

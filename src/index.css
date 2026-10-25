@@ -4,10 +4,13 @@
   --green: green;
   --purple: purple;
   --white: #ffffff;
-  --grey: #676767;
+  --darkYellow: #FFB954;
+  --grey: #E2E2E2;
+  --lightRed: #FFDAD6;
   --lightBrown: #5D3F3C;
   --redBrown: #BA0013;
   --lightOrange: #FFAB91;
+  --lightYellow: #feb64c;
 }
 
 *{

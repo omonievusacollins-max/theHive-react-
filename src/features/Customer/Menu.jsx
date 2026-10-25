@@ -1,17 +1,19 @@
 import {useState} from "react" // import useState
-// Components imported
+
+// Import Components
 import CategoryPill from './Component/CategoryPill'
 import SearchBar from '../../components/Inputs/SearchBar';
 
-// UTILS
+// import UTILS
 import { capitalizeWords } from '../../Utils/capitalizeFirstWords.js';
 
-// Hooks imported
+// Import Hooks
 import useMenu from '../../hooks/useMenu.js'
 
-// Images
+// Get Images
 const happyBurger = '/assets/newlyCroppedHappyBurger.png'
 const addBtn = '/assets/figma.svg'
+
 function Menu(){
   
   const menu = useMenu()
@@ -21,7 +23,7 @@ function Menu(){
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [Query, setQuery] = useState('')
   
-   const filteredMenu = selectedCategory === 'all' ? Menu : Menu.filter(([category, items]) => category === selectedCategory);
+  const filteredMenu = selectedCategory === 'all' ? Menu : Menu.filter(([category, items]) => category === selectedCategory);
   
   const searchFilterMenu = filteredMenu.map(([category, items]) => {
         const filtereItems = items.filter(item => item.name.includes(Query.toLowerCase()))
@@ -31,14 +33,14 @@ function Menu(){
     // remove empty arrays
     
     // COMPONENT STYLE
-    const searchStyle = {
-      height: '50px',
-      width: `calc(100vw - 20px)`,
-      border: 'none',
-      margin: '10px auto',
-      'border-radius': '50px',
-      padding: '0 20px 0 40px'
-    }
+  const searchStyle = {
+    height: '50px',
+    width: `calc(100vw - 20px)`,
+    border: 'none',
+    margin: '10px auto',
+    'border-radius': '50px',
+    padding: '0 20px 0 40px'
+  }
     
   return(
     <div>
