@@ -1,6 +1,8 @@
 import './Checkout.css'
 import {useState} from 'react'
 import {NavLink} from 'react-router-dom';
+//hooks
+import usePersistenceState from '../../hooks/usePersistenceState'
 
 const icons = {
   delivery: {
@@ -13,7 +15,7 @@ const icons = {
   }
 }
 function Checkout(){
-  const [orderType, setOrderType] = useState("pickup");
+  const [orderType, setOrderType] = usePersistenceState("pickup", []);
   
   return(
     <div className="checkoutBody">
@@ -81,8 +83,12 @@ function Checkout(){
           <p>N1500</p>
         </div>
         <div>
+          <p>Extras</p>
+          <p>N1500</p>
+        </div>
+        <div>
           <p>Total</p>
-          <p>N17500</p>
+          <p>N20500</p>
         </div>
       </div>
       
