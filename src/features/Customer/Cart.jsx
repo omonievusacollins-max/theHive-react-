@@ -1,10 +1,22 @@
 import './Cart.css'
 import {NavLink} from 'react-router-dom';
+import CustomizeModal from './Component/CustomizeModal';
+
+import {useState} from 'react'
+
+
+// hooks
+import usePersistenceState from '../../hooks/usePersistenceState'
+import useLongPress from '../../hooks/useLongPress'
 function Cart(){
+  // State to manage Customized modal
+  const [open, setOpen] = usePersistenceState('closed');
+  
+  const tapAndHold = useLongPress(()=> setOpen('open'), 400)
   return(
     <div className="cartBody">
       <p className="note">Tap to Customize</p>
-      <div id="mealContainer">
+      <div id="mealContainer" {...tapAndHold}>
         <img src="/assets/BugerImage.png" alt="burger" className="mealImage"/>
         <div>
           <div className="mealContent">
@@ -13,7 +25,7 @@ function Cart(){
           </div>
           <div className="amount">
             <p>N10,000</p>
-            <div className="quantityContainer">
+            <div className="quantityContainer no-hold">
               <button>-</button>
               <p className="quantity">2</p>
               <button>+</button>
@@ -97,7 +109,7 @@ function Cart(){
           <img src="/assets/arrowRight.svg" alt="forwardArrow"/>
         </button>
       </NavLink>
-
+      <CustomizeModal openModal={open} setOpenModal={setOpen}/>
     </div>
   )
 }

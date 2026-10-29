@@ -33,7 +33,7 @@ function BottomNav(){
             )}
           </NavLink>
           
-          <NavLink to="/Order" className="order">
+          <NavLink to="../Order" className="order">
             {({isActive}) => (
             <>
               <img src={isActive ? receiptRed : receiptGrey} alt="reciept"/>

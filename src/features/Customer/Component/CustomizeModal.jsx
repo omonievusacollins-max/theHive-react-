@@ -31,6 +31,7 @@ function CustomizeModal({openModal, setOpenModal}){
       <label for="kitchenNote" id="kitchenNote">Note for the kitchen</label>
       <input type="text" placeholder="e.g wrap the extra turkey seperately" className="kitchenNote"/>
       <button className="saveChanges">Save Changes</button>
+      <button className="saveChanges">Delete</button>
     </div>
   )
 }

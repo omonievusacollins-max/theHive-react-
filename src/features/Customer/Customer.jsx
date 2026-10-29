@@ -10,6 +10,8 @@ import './Customer.css'
 import MenuPage from './Menu'
 import CartPage from './Cart'
 import CheckoutPage from './Checkout'
+import OrderPage from './Order'
+
 // Components
 import BottomNav from './Component/BottomNav'
 
@@ -37,6 +39,7 @@ function Customer(){
         <Route path="/Menu" element={<MenuPage/>}/>
         <Route path="/Cart" element={<CartPage/>}/>
         <Route path="/Checkout" element={<CheckoutPage/>}/>
+        <Route path="/Order" element={<OrderPage/>}/>
       </Routes>
         
       <BottomNav/>

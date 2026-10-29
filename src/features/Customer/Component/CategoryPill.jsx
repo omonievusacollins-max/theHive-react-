@@ -1,6 +1,8 @@
 import './CategoryPill.css'
 import {useState} from "react"
 import useMenu from '../../../hooks/useMenu.js'
+//hooks
+import usePersistenceState from '../../../hooks/usePersistenceState'
 
 // Icons outside so it can run for every rerender.
 const icons = {
@@ -27,26 +29,23 @@ const icons = {
 
 const fallbackIcon = { brown: '/assets/Icon(6).svg', black: '/assets/Icon(6).svg' }
 
-function CategoryPill({activeState}) {
+function CategoryPill({setSelectedCategory, selectedCategory}) {
   const menu = useMenu()
   const category = Object.keys(menu);
-  const [active, setActive] = useState('all')
   
   return(
     <div className="pillsContainer">
       
       <div className="pills">
-        <button className={active === 'all' ? "pill activePill" : "pill"} onClick = { () =>{ setActive('all')
-          activeState('all')}}>All</button>
+        <button className={selectedCategory === 'all' ? "pill activePill" : "pill"} onClick = { () =>{ setSelectedCategory('all')}}>All</button>
         
         {category.map((label) => {
           const icon = icons[label] ?? fallbackIcon
           return(
           
           
-          <button key={label} className={active === label ? "pill activePill" : "pill"} onClick = { () => {setActive(label)
-            activeState(label)}}>
-            <img src = {active === label ? icon.black : icon.brown} alt="icon"/>
+          <button key={label} className={selectedCategory === label ? "pill activePill" : "pill"} onClick = { () => setSelectedCategory(label) }>
+            <img src = {selectedCategory === label ? icon.black : icon.brown} alt="icon"/>
             {label}
         </button>
          )

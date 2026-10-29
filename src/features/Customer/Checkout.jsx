@@ -92,7 +92,7 @@ function Checkout(){
         </div>
       </div>
       
-      <NavLink to="/Order" className="checkoutNav">
+      <NavLink to="/OrderSuccess" className="checkoutNav">
         <button className="checkoutBtn">
           Place Order
           <img src="/assets/arrowRight.svg" alt="forwardArrow"/>

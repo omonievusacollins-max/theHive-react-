@@ -9,6 +9,7 @@ import { capitalizeWords } from '../../Utils/capitalizeFirstWords.js';
 
 // Import Hooks
 import useMenu from '../../hooks/useMenu.js'
+import usePersistenceState from '../../hooks/usePersistenceState'
 
 // Get Images
 const happyBurger = '/assets/newlyCroppedHappyBurger.png'
@@ -19,8 +20,19 @@ function Menu(){
   const menu = useMenu()
   const Menu = Object.entries(menu)
   
+  const addToCart = (itemId) => {
+    
+    const result = Menu.flatMap(([category, item]) => item)
+    const result2 = Menu.flatMap((cat) => cat)
+    
+    console.log(result)
+    console.log(Menu)
+    console.log(result2)
+  }
+  addToCart()
+  
   // Filter menu with search and category pill
-  const [selectedCategory, setSelectedCategory] = useState('all');
+  const [selectedCategory, setSelectedCategory] = usePersistenceState('all');
   const [Query, setQuery] = useState('')
   
   const filteredMenu = selectedCategory === 'all' ? Menu : Menu.filter(([category, items]) => category === selectedCategory);
@@ -29,7 +41,6 @@ function Menu(){
         const filtereItems = items.filter(item => item.name.includes(Query.toLowerCase()))
         return [category, filtereItems]
     }).filter(([category, filtereItems]) => filtereItems.length > 0)
-    
     // remove empty arrays
     
     // COMPONENT STYLE
@@ -40,6 +51,10 @@ function Menu(){
     margin: '10px auto',
     'border-radius': '50px',
     padding: '0 20px 0 40px'
+  }
+  
+  const createCart = () => {
+    console.log('Cart created')
   }
     
   return(
@@ -64,12 +79,12 @@ function Menu(){
            searchstyle = {searchStyle}
            />
       </div>
-      <CategoryPill activeState={ setSelectedCategory}/>
+      <CategoryPill setSelectedCategory={setSelectedCategory}  selectedCategory = {selectedCategory}/>
         <div className="mealList">
           {
             searchFilterMenu.flatMap(([category, item]) => (
                 item.map(meal => (
-                  <div className="mealContainer">
+                  <div className="mealContainer" onClick={()=> createCart(item.id, 0)}>
                     <div className="mealDetails">
                       <div>{capitalizeWords( meal.name)}</div>
                       <div className="mealPrice">N{meal.price}</div>

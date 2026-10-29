@@ -1,7 +1,9 @@
 import {useRef} from 'react';
 function useLongPress(callback, delay){
   const timer = useRef(null);
-  const start = () => {
+  
+  const start = (e) => {
+    if(e.target.closest('.no-hold')) return // ignore presses on excluded children
     timer.current = setTimeout(callback, delay)
   }
   const cancel = () => clearTimeout(timer.current);
