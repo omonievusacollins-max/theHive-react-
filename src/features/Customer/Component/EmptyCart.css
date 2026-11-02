@@ -1,0 +1,24 @@
+.emptyCart {
+  text-align: center;
+  margin-top: 70%;
+}
+
+.emptyCart p{
+  font-size: 20px;
+  color: var(--lightBrown);
+}
+
+.menuBtn{
+  width: calc(50% - 20px);
+  height: 40px;
+  margin: 20px auto 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 999px;
+  border: none;
+  background: var(--redBrown);
+  color: var(--white);
+  text-decoration: none;
+}
