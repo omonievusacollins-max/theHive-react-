@@ -1,5 +1,13 @@
+// style
 import './CustomizeModal.css'
-function CustomizeModal({openModal, setOpenModal}){
+// Components
+import Button from './Button'
+// Context
+import {useCart} from '../../../Context/CartProvider'
+function CustomizeModal({openModal, setOpenModal, selectedLine}){
+  
+  const {cart, removeLine} = useCart();
+  
   return (
     <div className= {openModal === "closed" ? "customizeModal" : "customizeModal openSheet"}>
       <header>
@@ -30,8 +38,9 @@ function CustomizeModal({openModal, setOpenModal}){
       
       <label for="kitchenNote" id="kitchenNote">Note for the kitchen</label>
       <input type="text" placeholder="e.g wrap the extra turkey seperately" className="kitchenNote"/>
-      <button className="saveChanges">Save Changes</button>
-      <button className="saveChanges">Delete</button>
+      <Button text={'Save Changes'}/>
+      <Button text={'Delete'} style={{backgroundColor: 'var(--grey,)', color: 'black',}} onClick={()=> {removeLine(selectedLine); setOpenModal('closed')}}/>
+
     </div>
   )
 }

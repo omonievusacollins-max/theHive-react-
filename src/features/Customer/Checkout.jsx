@@ -1,9 +1,17 @@
+//css
 import './Checkout.css'
+//hooks
 import {useState} from 'react'
 import {NavLink} from 'react-router-dom';
-//hooks
 import usePersistenceState from '../../hooks/usePersistenceState'
 
+// components
+import Button from './Component/Button'
+
+// Context
+import {useCart} from '../../Context/CartProvider'
+
+// Icons
 const icons = {
   delivery: {
     white: '/assets/DeliveryScooter.svg',
@@ -12,10 +20,14 @@ const icons = {
   pickup:{
     white: 'assets/PickupCartWhite.svg',
     brown: 'assets/PickupCart.svg'
-  }
+  },
+  forwardArrow: '/assets/arrowRight.svg'
 }
+
 function Checkout(){
   const [orderType, setOrderType] = usePersistenceState("pickup", []);
+  
+  const {removeLine} = useCart()
   
   return(
     <div className="checkoutBody">
@@ -93,10 +105,7 @@ function Checkout(){
       </div>
       
       <NavLink to="/OrderSuccess" className="checkoutNav">
-        <button className="checkoutBtn">
-          Place Order
-          <img src="/assets/arrowRight.svg" alt="forwardArrow"/>
-        </button>
+        <Button text={'Place order'} iconSrc={icons.forwardArrow}/>
       </NavLink>
 
     </div>

@@ -6,7 +6,7 @@
   margin: 10px 15px;
   color: var(--grey);
 }
-#mealContainer{
+.meal_Container{
   width: calc(100vw - 25px);
   height: fit-content;
   background: var(--white);
@@ -20,7 +20,7 @@
   user-select: none;
 }
 
-#mealContainer > div{
+.meal_Container > div{
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -46,7 +46,7 @@
   border-radius: 33px;
 }
 
-#mealContainer .mealContent{
+.meal_Container .mealContent{
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -54,7 +54,7 @@
   height: 50px;
 }
 
-#mealContainer > div .amount{
+.meal_Container > div .amount{
   display: flex;
   justify-content: space-between;
   align-items: center;

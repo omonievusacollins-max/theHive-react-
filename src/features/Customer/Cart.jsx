@@ -1,80 +1,79 @@
+// CSS
 import './Cart.css'
+
+// COMPONENTS
 import {NavLink} from 'react-router-dom';
 import CustomizeModal from './Component/CustomizeModal';
-
-import {useState} from 'react'
+import EmptyCart from './Component/EmptyCart'
+import Button from './Component/Button'
 
 
 // hooks
+import {useState} from 'react'
 import usePersistenceState from '../../hooks/usePersistenceState'
 import useLongPress from '../../hooks/useLongPress'
+
+// Context
+import {useCart} from '../../Context/CartProvider'
+
+// Utils
+import { capitalizeWords } from '../../Utils/capitalizeFirstWords.js';
+
 function Cart(){
-  // State to manage Customized modal
-  const [open, setOpen] = usePersistenceState('closed');
+  // Mathematics SubTotal, Total, Qty, and more
+  const {cart, updateQty} = useCart();
+  const subtotal = cart.reduce((sum, l)=> sum + l.price * l.qty, 0)
   
-  const tapAndHold = useLongPress(()=> setOpen('open'), 400)
+  //Clear cart
+  function clearCart(){
+    localStorage.removeItem('hive-cart')
+    cart.length = 0
+    console.log(cart.length)
+  }
+  
+  // State to manage Customized modal
+  const [open, setOpen] = useState('closed');
+  
+  // const tapAndHold = useLongPress(()=> setOpen('open'), 400)
+  const [line, setLine] = useState('')
+  // Empty cart
+  if(cart.length === 0){
+    return (
+      <div className="empty-cart">
+        <EmptyCart/>
+      </div>
+    )
+  }
+  
   return(
+    <>
+    
     <div className="cartBody">
       <p className="note">Tap to Customize</p>
-      <div id="mealContainer" {...tapAndHold}>
+      {
+        cart.map(item => (
+        <div class="meal_Container" {...useLongPress(()=> {setOpen('open'); setLine(item.lineId)}, 400)} key={item.lineId}>
         <img src="/assets/BugerImage.png" alt="burger" className="mealImage"/>
         <div>
           <div className="mealContent">
-            <p className="mealName">Double Decker</p>
+            <p className="mealName">{capitalizeWords(item.name)}</p>
             <p className="mealExtra">Hot, Extra Sausage</p>
           </div>
           <div className="amount">
-            <p>N10,000</p>
+            <p>N{item.price * item.qty}</p>
             <div className="quantityContainer no-hold">
-              <button>-</button>
-              <p className="quantity">2</p>
-              <button>+</button>
+              <button onClick ={()=> updateQty(item.lineId, item.qty - 1)} disabled={item.qty===1}>-</button>
+              <p className="quantity">{item.qty}</p>
+              <button onClick ={()=> updateQty(item.lineId, item.qty + 1)}>+</button>
             </div>
           </div>
          
         </div>
         
       </div>
+        ))
+      }
       
-      <div id="mealContainer">
-        <img src="/assets/BugerImage.png" alt="burger" className="mealImage"/>
-        <div>
-          <div className="mealContent">
-            <p className="mealName">Double Decker</p>
-            <p className="mealExtra">Hot, Extra Sausage</p>
-          </div>
-          <div className="amount">
-            <p>N10,000</p>
-            <div className="quantityContainer">
-              <button>-</button>
-              <p className="quantity">2</p>
-              <button>+</button>
-            </div>
-          </div>
-         
-        </div>
-        
-      </div>
-      
-      <div id="mealContainer">
-        <img src="/assets/BugerImage.png" alt="burger" className="mealImage"/>
-        <div>
-          <div className="mealContent">
-            <p className="mealName">Double Decker</p>
-            <p className="mealExtra">Hot, Extra Sausage</p>
-          </div>
-          <div className="amount">
-            <p>N10,000</p>
-            <div className="quantityContainer">
-              <button>-</button>
-              <p className="quantity">2</p>
-              <button>+</button>
-            </div>
-          </div>
-         
-        </div>
-        
-      </div>
       <div className="refreshingDrink">
         <p>Coming soon</p>
         <div>
@@ -90,7 +89,7 @@ function Cart(){
           <p>Summary</p>
           <div className="subtotalContainer">
             <p>SubTotal</p>
-            <p>N17,500</p>
+            <p>{subtotal}</p>
           </div>
           <div className="extrasContainer">
             <p>Extras</p>
@@ -99,18 +98,22 @@ function Cart(){
           <hr className="hr"/>
           <div className="totalContainer">
             <p>Total</p>
-            <p>N19,000</p>
+            <p>N{subtotal + 1500}</p>
           </div>
         </div>
       </div>
+      
       <NavLink to="/Checkout" className="checkoutNav">
-        <button className="checkoutBtn">
+        <Button text={'Go to Checkout'} onClick={()=> clearCart()}/>
+        {/*<button className="checkoutBtn">
           Go to Checkout 
           <img src="/assets/arrowRight.svg" alt="forwardArrow"/>
-        </button>
+        </button>*/}
       </NavLink>
-      <CustomizeModal openModal={open} setOpenModal={setOpen}/>
+      
+      <CustomizeModal openModal={open} setOpenModal={setOpen} selectedLine={line}/>
     </div>
+    </>
   )
 }
 export default Cart

@@ -11,6 +11,9 @@ import { capitalizeWords } from '../../Utils/capitalizeFirstWords.js';
 import useMenu from '../../hooks/useMenu.js'
 import usePersistenceState from '../../hooks/usePersistenceState'
 
+// import Context
+import {useCart} from '../../Context/CartProvider';
+
 // Get Images
 const happyBurger = '/assets/newlyCroppedHappyBurger.png'
 const addBtn = '/assets/figma.svg'
@@ -20,16 +23,42 @@ function Menu(){
   const menu = useMenu()
   const Menu = Object.entries(menu)
   
-  const addToCart = (itemId) => {
+  // FUNCTION TO ADD ITEM TO CART
+  // const addToCart = (itemId) => {
     
-    const result = Menu.flatMap(([category, item]) => item)
-    const result2 = Menu.flatMap((cat) => cat)
+  //   // Find the tapped item
+  //   const allItems = Menu.flatMap(([, items]) => items)
+  //   const menuItem = allItems.find(e => e.id === itemId)
+  //   if(!menuItem) return // bad id: stop, change nothing
     
-    console.log(result)
-    console.log(Menu)
-    console.log(result2)
-  }
-  addToCart()
+  //   // Build the cart line for this item
+  //   const line = {
+  //     itemId: menuItem.id,
+  //     name: menuItem.name,
+  //     price: menuItem.price,
+  //     category: menuItem.category,
+  //     qty: 1,
+  //     lineId: `${itemId}|||`
+  //   }
+    
+  //   // Read the saves cart (fallback to an empty array)
+  //   const cart = JSON.parse(localStorage.getItem('hive-cart') || "[]");
+    
+  //   let newCart;
+  //   // Decide to merge into an existing cart or create a new one
+  //   const alreadyInCart = cart.some(e => e.lineId === line.lineId);
+    
+  //   if(alreadyInCart) {
+  //     newCart = cart.map(l => l.lineId === line.lineId ? {...l, qty: l.qty + 1} : l)
+  //   }else{
+  //     newCart = [...cart, line]
+  //   }
+  //   // Save and log
+  //   localStorage.setItem('hive-cart', JSON.stringify(newCart))
+  //   console.log(newCart)
+  // }
+  
+  const {addToCart} = useCart()
   
   // Filter menu with search and category pill
   const [selectedCategory, setSelectedCategory] = usePersistenceState('all');
@@ -51,10 +80,6 @@ function Menu(){
     margin: '10px auto',
     'border-radius': '50px',
     padding: '0 20px 0 40px'
-  }
-  
-  const createCart = () => {
-    console.log('Cart created')
   }
     
   return(
@@ -84,7 +109,7 @@ function Menu(){
           {
             searchFilterMenu.flatMap(([category, item]) => (
                 item.map(meal => (
-                  <div className="mealContainer" onClick={()=> createCart(item.id, 0)}>
+                  <div className="mealContainer" onClick={()=> addToCart(meal)} key={meal.id}>
                     <div className="mealDetails">
                       <div>{capitalizeWords( meal.name)}</div>
                       <div className="mealPrice">N{meal.price}</div>

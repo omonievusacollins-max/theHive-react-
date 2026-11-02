@@ -15,6 +15,9 @@ import OrderPage from './Order'
 // Components
 import BottomNav from './Component/BottomNav'
 
+// Context
+import {CartProvider} from '../../Context/CartProvider'
+
 const TITLES = {
   "/Menu": "Menu",
   "/Cart": "Cart",
@@ -24,8 +27,9 @@ const TITLES = {
 
 // Customer function
 function Customer(){
-    const pathName = useLocation()
+    const {pathName} = useLocation()
   return(
+    <CartProvider>
     <div className="body">
       <header className="logoContainer">
         <div>
@@ -44,6 +48,7 @@ function Customer(){
         
       <BottomNav/>
     </div>
+    </CartProvider>
   )
 }
 export default Customer;
