@@ -1,0 +1,85 @@
+.meal_Container{
+  width: calc(100vw - 25px);
+  height: fit-content;
+  background: var(--white);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 45px;
+  padding: 10px;
+  margin: 0 auto 13px auto;
+  touch-action: manipulation;
+  user-select: none;
+}
+
+.meal_Container > div{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 100%;
+  height: 110px;
+  padding: 9px 10px;
+  /* border: 1px solid orangered; */
+}
+.mealContent .mealName{
+  font-weight: bold;
+}
+
+.mealExtra{
+  color: var(--lightBrown);
+  font-weight: bold;
+}
+
+.mealImage{
+  /* border: 1px solid blue; */
+  height: 100px;
+  width: 100px;
+  border-radius: 33px;
+}
+
+.meal_Container .mealContent{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  /* border: 1px dashed brown; */
+  height: 50px;
+}
+
+.meal_Container > div .amount{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* border: 1px solid red; */
+  width: 100%;
+  color: var(--redBrown);
+}
+
+.amount > .quantityContainer{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* border: 1px solid black; */
+  background: var(--lightRed);
+  border-radius: 30px;
+  padding: 0 3px;
+  color: black;
+  font-weight: bold;
+}
+
+.amount > .quantityContainer button {
+  font-size: 30px;
+}
+
+.amount > .quantityContainer button:first-child {
+  margin-bottom: 7px;
+}
+
+.quantityContainer button{
+  width: 30px;
+  font-size: 18px;
+  background: none;
+  border: none;
+  font-weight: bold;
+}
+

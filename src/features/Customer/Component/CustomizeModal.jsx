@@ -39,7 +39,7 @@ function CustomizeModal({openModal, setOpenModal, selectedLine}){
       <label for="kitchenNote" id="kitchenNote">Note for the kitchen</label>
       <input type="text" placeholder="e.g wrap the extra turkey seperately" className="kitchenNote"/>
       <Button text={'Save Changes'}/>
-      <Button text={'Delete'} style={{backgroundColor: 'var(--grey,)', color: 'black',}} onClick={()=> {removeLine(selectedLine); setOpenModal('closed')}}/>
+      <Button text={'Delete'} style={{backgroundColor: 'var(--grey,)', color: 'black',}} onClick={()=> {removeLine(selectedLine.lineId); setOpenModal('closed')}}/>
 
     </div>
   )

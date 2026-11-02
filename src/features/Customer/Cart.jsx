@@ -6,7 +6,7 @@ import {NavLink} from 'react-router-dom';
 import CustomizeModal from './Component/CustomizeModal';
 import EmptyCart from './Component/EmptyCart'
 import Button from './Component/Button'
-
+import CartItem from './Component/CartItem'
 
 // hooks
 import {useState} from 'react'
@@ -52,25 +52,7 @@ function Cart(){
       <p className="note">Tap to Customize</p>
       {
         cart.map(item => (
-        <div class="meal_Container" {...useLongPress(()=> {setOpen('open'); setLine(item.lineId)}, 400)} key={item.lineId}>
-        <img src="/assets/BugerImage.png" alt="burger" className="mealImage"/>
-        <div>
-          <div className="mealContent">
-            <p className="mealName">{capitalizeWords(item.name)}</p>
-            <p className="mealExtra">Hot, Extra Sausage</p>
-          </div>
-          <div className="amount">
-            <p>N{item.price * item.qty}</p>
-            <div className="quantityContainer no-hold">
-              <button onClick ={()=> updateQty(item.lineId, item.qty - 1)} disabled={item.qty===1}>-</button>
-              <p className="quantity">{item.qty}</p>
-              <button onClick ={()=> updateQty(item.lineId, item.qty + 1)}>+</button>
-            </div>
-          </div>
-         
-        </div>
-        
-      </div>
+        <CartItem key={item.lineId} item={item} updateQty={updateQty} onSelect={(line) => {setLine(line); setOpen('open')}}/>
         ))
       }
       
@@ -104,7 +86,7 @@ function Cart(){
       </div>
       
       <NavLink to="/Checkout" className="checkoutNav">
-        <Button text={'Go to Checkout'} onClick={()=> clearCart()}/>
+        <Button text={'Go to Checkout'}/>
         {/*<button className="checkoutBtn">
           Go to Checkout 
           <img src="/assets/arrowRight.svg" alt="forwardArrow"/>
