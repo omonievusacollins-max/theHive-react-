@@ -1,5 +1,4 @@
 .customizeModal{
-  border: 1px solid red;
   padding: 20px;
   background: var(--white);
   border-radius: 40px 40px 0 0;
@@ -54,12 +53,17 @@
 }
 
 .spiceLevel .levels div{
-  background: black;
-  color: white;
+  background: white;
+  color: black;
   padding: 8px;
   border-radius: 10px;
   width: 100%;
   text-align: center;
+}
+
+.spiceLevel .levels .activeSpice{
+  background: black;
+  color: white;
 }
 
 .extra{
@@ -71,8 +75,18 @@
   background: var(--grey);
   /* height: 40px; */
   margin-bottom: 10px;
-  padding: 15px;
+  padding: 12px;
   border-radius: 15px;
+  display: flex;
+  justify-content: space-between;
+}
+.extra img{
+  width: 25px;
+}
+
+.extra .active{
+  background: black;
+  color: white;
 }
 
 .kitchenNote{

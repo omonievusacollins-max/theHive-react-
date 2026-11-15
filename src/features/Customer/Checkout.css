@@ -67,6 +67,45 @@ justify-content: center; */
   width: calc(100% - 20px);
 }
 
+.delivery{
+  /* border: 1px solid red; */
+  background: var(--lightYellow);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 200px;
+  margin-top: 10px;
+  padding: 10px;
+  color: var(--lightBrown);
+}
+.deliveryZones > p{
+  margin-bottom: 5px;
+}
+
+.locationAndPrice div{
+  border: 1px solid black;
+  display: flex;
+  justify-content: space-between;
+  padding: 15px;
+  border-radius: 10px;
+}
+
+.delivery input{
+  width: 100%;
+  height: 40px;
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+/* margin: 25px 0; */
+}
+
+.currentLocation{
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+
 .timeInterval{
   background: var(--darkYellow);
   display: flex;

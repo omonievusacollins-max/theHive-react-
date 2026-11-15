@@ -26,8 +26,8 @@ const icons = {
 
 function Checkout(){
   const [orderType, setOrderType] = usePersistenceState("pickup", []);
-  
-  const {removeLine} = useCart()
+  const {cart, updateQty, removeLine} = useCart()
+const subtotal = cart.reduce((sum, l)=> sum + l.price * l.qty, 0)
   
   return(
     <div className="checkoutBody">
@@ -75,9 +75,33 @@ function Checkout(){
                 <img src="/assets/Clock.svg" alt="clock" className="clock"/>
                 <p>30-45 min</p>
               </div>
-              
             </div>
-            <input type="text" className="inputLocation"/>
+            {/*<input type="text" className="inputLocation"/>*/}
+            <div className="delivery">
+              <div className="deliveryZones">
+                <p>Delivery Zones</p>
+                <div className="locationAndPrice">
+                  {/*<div>
+                    <p>Location</p>
+                    <p>Price</p>
+                  </div>*/}
+                  <select>
+                    <option>Bdpa - N1500</option>
+                    <option>Adolor - N1000</option>
+                    <option>Osasogie - N700</option>
+                    <option>Ekosodin - N1500</option>
+                    <option>Uniben - 1000</option>
+                  </select>
+                </div>
+              </div>
+              <input type="text" placeholder='Adress'/>
+              <div>
+                
+              </div>
+              {/*<div className="currentLocation"><img alt="location" src="#"/>Use my location</div>*/}
+              <input placeholder="Note for rider"/>
+            </div>
+      
           </div>
         </div>
         }
@@ -86,8 +110,8 @@ function Checkout(){
       
       <div className="calcPrice">
         <div>
-          <p>Subbtotal</p>
-          <p>N17500</p>
+          <p>Subtotal</p>
+          <p>N{subtotal}</p>
         </div>
         <hr/>
         <div>

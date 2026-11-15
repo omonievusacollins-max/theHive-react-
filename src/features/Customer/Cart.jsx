@@ -12,6 +12,7 @@ import CartItem from './Component/CartItem'
 import {useState} from 'react'
 import usePersistenceState from '../../hooks/usePersistenceState'
 import useLongPress from '../../hooks/useLongPress'
+import useExtras from '../../hooks/useExtras'
 
 // Context
 import {useCart} from '../../Context/CartProvider'
@@ -21,6 +22,8 @@ import { capitalizeWords } from '../../Utils/capitalizeFirstWords.js';
 
 function Cart(){
   // Mathematics SubTotal, Total, Qty, and more
+  const extras = useExtras()
+  
   const {cart, updateQty} = useCart();
   const subtotal = cart.reduce((sum, l)=> sum + l.price * l.qty, 0)
   
@@ -30,12 +33,12 @@ function Cart(){
     cart.length = 0
     console.log(cart.length)
   }
-  
+  // STATES CREATED
   // State to manage Customized modal
   const [open, setOpen] = useState('closed');
-  
-  // const tapAndHold = useLongPress(()=> setOpen('open'), 400)
   const [line, setLine] = useState('')
+  const [modalItem, setModalItem] = useState('')
+  const [extraQty, setExtraQty] = useState(1); // This is for customize modal
   // Empty cart
   if(cart.length === 0){
     return (
@@ -49,10 +52,10 @@ function Cart(){
     <>
     
     <div className="cartBody">
-      <p className="note">Tap to Customize</p>
+      <p className="note">Tap and hold to Customize</p>
       {
         cart.map(item => (
-        <CartItem key={item.lineId} item={item} updateQty={updateQty} onSelect={(line) => {setLine(line); setOpen('open')}}/>
+        <CartItem key={item.lineId} item={item} updateQty={updateQty} onSelect={(line) => {setLine(line); setOpen('open'); setModalItem(item.name); setExtraQty(item.qty)}}/>
         ))
       }
       
@@ -71,7 +74,7 @@ function Cart(){
           <p>Summary</p>
           <div className="subtotalContainer">
             <p>SubTotal</p>
-            <p>{subtotal}</p>
+            <p>N{subtotal}</p>
           </div>
           <div className="extrasContainer">
             <p>Extras</p>
@@ -93,7 +96,7 @@ function Cart(){
         </button>*/}
       </NavLink>
       
-      <CustomizeModal openModal={open} setOpenModal={setOpen} selectedLine={line}/>
+      <CustomizeModal openModal={open} setOpenModal={setOpen} selectedLine={line} modalHeader={modalItem} extras={extras} qty={extraQty}/>
     </div>
     </>
   )
