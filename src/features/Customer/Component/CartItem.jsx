@@ -7,6 +7,10 @@ import {useCart} from '../../../Context/CartProvider'
 //hooks
 import useLongPress from '../../../hooks/useLongPress'
 
+//Icons
+const add = '/assets/add.svg'
+const remove = 'assets/remove.svg'
+
 function CartItem({item, onSelect, updateQty}){
   
   const {cart, removeLine} = useCart();
@@ -24,9 +28,9 @@ function CartItem({item, onSelect, updateQty}){
           <div className="amount">
             <p>N{item.price * item.qty}</p>
             <div className="quantityContainer no-hold">
-              <button onClick ={()=> updateQty(item.lineId, item.qty - 1)} disabled={item.qty===1}>-</button>
+              <button onClick ={()=> updateQty(item.lineId, item.qty - 1)} disabled={item.qty===1}><img src={remove}/></button>
               <p className="quantity">{item.qty}</p>
-              <button onClick ={()=> updateQty(item.lineId, item.qty + 1)}>+</button>
+              <button onClick ={()=> updateQty(item.lineId, item.qty + 1)}><img src={add}/></button>
             </div>
           </div>
          

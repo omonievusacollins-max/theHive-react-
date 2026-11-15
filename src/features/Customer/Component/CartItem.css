@@ -71,9 +71,9 @@
   font-size: 30px;
 }
 
-.amount > .quantityContainer button:first-child {
+/* .amount > .quantityContainer button:first-child {
   margin-bottom: 7px;
-}
+} */
 
 .quantityContainer button{
   width: 30px;
